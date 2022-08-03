@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--  Stylesheets <-->
   <link rel="stylesheet" href="css/app.css">
-  <link rel="stylesheet" href="css/css-toggle-switch-master/dist/toggle-switch.css"
+  <link rel="stylesheet" href="css/css-toggle-switch-master/dist/toggle-switch.css">
   <!--    favicon links-->
   <link rel="apple-touch-icon" sizes="180x180" href="svg/favicon_io/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="svg/favicon_io/favicon-32x32.png">
@@ -19,7 +20,7 @@
   <title>"Insert tittle here"</title>
 </head>
 
-<body>
+<body class="grid-container">
 <header class="row">
   <h1 class="tittle">webApp</h1>
   <div class="bell-notifications">
@@ -186,26 +187,26 @@
   <section class="settings-container">
     <h3>Settings</h3>
 
-  <label class="switch-light switch-material" onclick="">
-    <input type="checkbox">
+    <label class="switch-light switch-material" onclick="">
+      <input type="checkbox">
 
-    <strong>
-      Wireless
-    </strong>
+      <strong>
+        Wireless
+      </strong>
 
-    <span>
+      <span>
       <span>Off</span>
       <span>On</span>
       <a></a>
     </span>
-  </label>
+    </label>
 
 
     <label for="timezone"></label>
     <select class="form-field" id="timezone">
       <option disabled selected>Select a Timezone</option>
       <option>Eastern</option>
-      <!--      more options -->
+      <!--      TODO: add more options -->
     </select>
     <div class="settings-button">
       <button class="button-primary" id="save">Save</button>
