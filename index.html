@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap"
         rel="stylesheet">
-  <!--    -->
+
   <title>"Insert tittle here"</title>
 </head>
 
@@ -35,7 +35,7 @@
   <h3>Student Name</h3>
 
 </header>
-
+<!-- navigation -->
 <nav class="main-nav">
   <a class="nav-link" href="#"><img src="svg/home.svg" alt="home navigation link"></a>
   <a class="nav-link" href="#"><img src="svg/bar-chart.svg" alt="charts navigation link"></a>
@@ -71,7 +71,7 @@
   </section>
 
   <section class="daily">
-    <h3>Daily Traffic'</h3>
+    <h3>Daily Traffic</h3>
     <div class="widget-container-half">
       <!--       element bar graph will attach to-->
       <canvas id="daily-chart"></canvas>
@@ -95,7 +95,8 @@
         </svg>
       </div>
       <div class="social-text">
-
+        <p>Instagram</p>
+        <p>"followers num"</p>
       </div>
     </div>
 
@@ -107,7 +108,8 @@
         </svg>
       </div>
       <div class="social-text">
-
+        <p>Facebook</p>
+        <p>"followers num"</p>
       </div>
     </div>
 
@@ -119,21 +121,82 @@
         </svg>
       </div>
       <div class="social-text">
-
+        <p>Twitter</p>
+        <p>"followers num"</p>
       </div>
     </div>
   </section>
 
+  <section class="members">
+    <h3>New Members</h3>
 
-  <!--<form id="form">
-    <input
-        type="search"
-        name="search"
-        id="searchBar"
-        onkeyup="searchWordFunction()"
-        placeholder="Search images"
-    />
-  </form>-->
+    <!--    TODO: add members dynamically -->
+    <div class="member-container">
+      <img class="profile-img" src="#" alt="profile image">
+      <div class="text-wrapper">
+        <p>Member name</p>
+        <p><strong>Email: </strong><a href="#">memeber@mail.com</a></p>
+      </div>
+      <p>00/00/00</p>
+    </div>
+  </section>
+
+  <section class="recent-activity">
+    <h3>Recent Activity</h3>
+
+    <!--    TODO: add members dynamically -->
+    <div class="member-container">
+      <img class="profile-img" src="#" alt="">
+      <div class="text-wrapper">
+        <p>comment</p>
+        <p>00/00/00</p>
+      </div>
+      <p> > </p>
+    </div>
+  </section>
+
+
+  <!--    messaging widget -->
+  <section class="message">
+    <h3>Message User</h3>
+
+    <form id="widget-container">
+      <label for="user-field"></label>
+      <input
+          class="form-field"
+          id="user-field"
+          name="search"
+          type="text"
+          placeholder="Search for user"
+      />
+
+      <label for="message-field"></label>
+      <textarea
+          class="form-area"
+          id="message-field"
+          placeholder="Message for user"
+      ></textarea>
+
+      <button class="btn-send-msg" id="send">SEND</button>
+    </form>
+  </section>
+
+  <!--  local settings widget -->
+  <section class="settings-container">
+    <h3>Settings</h3>
+
+
+    <label for="timezone"></label>
+    <select class="form-field" id="timezone">
+      <option disabled selected>Select a Timezone</option>
+      <option>Eastern</option>
+      <!--      more options -->
+    </select>
+    <div class="settings-button">
+      <button class="button-primary" id="save">Save</button>
+      <button class="button-disabled" id="cancel">Cancel</button>
+    </div>
+  </section>
 </main>
 
 <footer>
