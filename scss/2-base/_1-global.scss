@@ -1,9 +1,23 @@
+// ===========
+// Base Layout
+// ===========
+
 * {
+  // Without box-sizing, the width property represents
+  // the content area of the element
   box-sizing: border-box;
 }
 
 body {
   font-family: 'Montserrat', sans-serif;
   height: 100vh;
+}
+
+p {
+  line-height: 1.45em;
+}
+
+a {
+  text-decoration: none;
 }
 

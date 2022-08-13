@@ -1,7 +1,45 @@
+// ============
+//  Grid layout
+// ============
+
 .grid-container {
   display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-gap: 30px; // short hand
+  //max-width: ;
 }
 
 .grid-area {
   //grid-area: ;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 2fr repeat(3, minmax(100px, 150px));
+  grid-gap: 30px;
+  justify-content: center;
+}
+
+.main-nav{
+  display: grid;
+  grid-template-columns:repeat(4, 1fr);
+  grid-template-rows: 150px;
+  grid-gap: 30px;
+}
+
+.bell-notifications {
+  padding: 30px;
+}
+
+.social-stats{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  grid-auto-rows: 1fr;
+  grid-auto-flow: column;
+  grid-gap: 40px;
+}
+
+.social-container{
+  display: flex;
 }
