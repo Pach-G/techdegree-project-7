@@ -1,6 +1,7 @@
 // ============
 //  Grid layout
 // ============
+//(320px) mobile
 
 .grid-container {
   display: grid;
@@ -32,6 +33,12 @@
 
 .main {
   grid-area: main;
+  display: grid;
+}
+
+.widget-container-full,
+.widget-container-half {
+  width: 95vw;
 }
 
 //
@@ -55,7 +62,7 @@
 //  Media queries
 // ============
 
-//(320px) mobile
+//(768px) tablet
 @media (min-width: 768px) {
   .grid-container {
     grid-template-columns: 55px 1fr;
@@ -63,9 +70,38 @@
             "header header"
             'nav main';
   }
-}
 
-//(768px) tablet
+  .main {
+    grid-template-columns: 50%;
+  }
+
+  .traffic,
+  .social-stats {
+    grid-column: 1 / span 2;
+  }
+
+  .daily,
+  .mobile,
+  .recent-activity {
+    grid-column: 1 / span 1;
+  }
+
+  .mobile,
+  .recent-activity,
+  .settings-container {
+    grid-column: 2 / span 1;
+  }
+
+  .widget-container-full {
+    width: 90vw;
+  }
+
+  .widget-container-half {
+    width: 45vw;
+  }
+
+
+}
 
 
 //(1024px) desktop
