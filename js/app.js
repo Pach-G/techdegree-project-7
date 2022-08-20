@@ -1,5 +1,7 @@
 const alert = document.getElementById('alert');
 const trafficCanvas = document.getElementById('traffic-chart');
+const dailyCanvas = document.getElementById('daily-chart');
+const mobileCanvas = document.getElementById('doughnut-chart');
 
 
 // Create the HTML for the alert banner
@@ -19,6 +21,8 @@ alert.addEventListener('click', (e) => {
   }
 });
 
+
+// Create traffic chart
 let trafficData = {
   labels: [
     "16-22", "23-29", "30-5", "6-12", "13-19", "20-26",
@@ -34,7 +38,6 @@ let trafficData = {
     },
   ],
 };
-
 
 // TODO: - add more options to personalized it
 let trafficOptions = {
@@ -55,4 +58,77 @@ let trafficChart = new Chart(trafficCanvas, {
   data: trafficData,
   options: trafficOptions,
 });
+
+
+// Data for daily traffic bar chart
+const dailyData = {
+  labels: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+  datasets: [
+    {
+      label: '# of Hits',
+      data: [75, 115, 175, 125, 225, 200, 100],
+      backgroundColor: '#7477BF',
+      borderWidth: 1,
+    },
+  ],
+};
+
+const dailyOptions = {
+  scales: {
+    y: {
+      beginAtZero: true,
+    },
+  },
+  plugins: {
+    legend: {
+      display: false,
+    },
+  },
+};
+
+let dailyChart = new Chart(dailyCanvas, {
+  type: 'bar',
+  data: dailyData,
+  options: dailyOptions,
+});
+
+// Mobile users chart
+const mobileData = {
+  labels: ['Desktop', 'Tablet', 'Phones'],
+  datasets: [
+    {
+      label: '# of users',
+      data: [2000, 550, 500],
+      borderWith: 0,
+      backgroundColor: [
+        '#7477BF',
+        '#78CF82',
+        '#51B6C8',
+      ],
+    },
+  ],
+};
+
+const mobileOptions = {
+  aspectRatio: 1.9,
+  plugins: {
+    legend: {
+      position: 'right',
+      labels: {
+        boxWith: 20,
+        fontStyle: 'bold',
+      },
+    },
+  },
+};
+
+let mobileChart = new Chart(mobileCanvas, {
+  type: 'doughnut',
+  data: mobileData,
+  options: mobileOptions,
+});
+
+
+
+
 
