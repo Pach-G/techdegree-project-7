@@ -2,6 +2,9 @@ const alert = document.getElementById('alert');
 const trafficCanvas = document.getElementById('traffic-chart');
 const dailyCanvas = document.getElementById('daily-chart');
 const mobileCanvas = document.getElementById('doughnut-chart');
+const user = document.getElementById('user-field')
+const message = document.getElementById('message-field')
+const sendMessage = document.getElementById('send')
 
 
 // Create the HTML for the alert banner
@@ -34,7 +37,7 @@ let trafficData = {
         750, 1250, 1000, 2000, 1500, 1750, 1250, 1850, 2250, 1500, 2500,
       ],
       backgroundColor: 'rgba(116, 119, 191, .3)',
-      borderWidth: 1,
+      borderWidth: 2,
     },
   ],
 };
@@ -128,7 +131,13 @@ let mobileChart = new Chart(mobileCanvas, {
   options: mobileOptions,
 });
 
-
+// sendMessage.addEventListener('click', () => {
+//   // Ensure user and message fields are filled out
+//   if (user.value === '' && message.value === '' ){
+//     alert('Please fill out user and message fields before sending');
+//   }
+//   else if (user.value === )
+// })
 
 
 
