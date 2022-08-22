@@ -131,13 +131,24 @@ let mobileChart = new Chart(mobileCanvas, {
   options: mobileOptions,
 });
 
-// sendMessage.addEventListener('click', () => {
-//   // Ensure user and message fields are filled out
-//   if (user.value === '' && message.value === '' ){
-//     alert('Please fill out user and message fields before sending');
-//   }
-//   else if (user.value === )
-// })
+sendMessage.addEventListener('click', () => {
+  // Ensure user and message fields are filled out
+  if (user.value === '' && message.value === '' ){
+    alert('Please fill out user and message fields before sending');
+  }
+  else if (user.value === '') {
+    alert("Please fill out user field before sending")
+  }
+  else if (message.value === ''){
+    alert("Please fill out message field before sending")
+  }
+  else {
+    alert(`Message successfully sent to: ${user.value}`)
+  }
+});
+
+
+
 
 
 

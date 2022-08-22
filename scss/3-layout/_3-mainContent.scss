@@ -1,8 +1,8 @@
 // ============
 //  Grid layout
 // ============
-//(320px) mobile
 
+//(320px) mobile
 .grid-container {
   display: grid;
   grid-template-columns:100%;
@@ -11,12 +11,13 @@
           'header'
           'nav'
           'main';
-  //grid-gap: 30px; // short hand
+  grid-gap: 30px; // short hand
   //max-width: ;
 }
 
 .header {
   grid-area: header;
+  display: flex;
   //display: grid;
   //grid-template-columns: 2fr repeat(3, minmax(100px, 150px));
   //grid-gap: 30px;
