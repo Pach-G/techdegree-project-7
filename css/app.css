@@ -1,3 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  height: 100vh;
+}
+
+p {
+  line-height: 1.45em;
+}
+
+a {
+  text-decoration: none;
+}
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -337,21 +354,13 @@ template {
   display: none;
 }
 
-* {
-  box-sizing: border-box;
+.bell-notifications {
+  margin: 30px 15px;
 }
 
-body {
-  font-family: "Montserrat", sans-serif;
-  height: 100vh;
-}
-
-p {
-  line-height: 1.45em;
-}
-
-a {
-  text-decoration: none;
+.tittle {
+  margin: auto;
+  align-content: start;
 }
 
 .grid-container {
@@ -359,10 +368,12 @@ a {
   grid-template-columns: 100%;
   grid-template-rows: auto;
   grid-template-areas: "header" "nav" "main";
+  grid-gap: 30px;
 }
 
 .header {
   grid-area: header;
+  display: flex;
 }
 
 .nav {
