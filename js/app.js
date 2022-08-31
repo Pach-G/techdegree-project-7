@@ -2,25 +2,24 @@ const alert = document.getElementById('alert');
 const trafficCanvas = document.getElementById('traffic-chart');
 const dailyCanvas = document.getElementById('daily-chart');
 const mobileCanvas = document.getElementById('doughnut-chart');
-const user = document.getElementById('user-field')
-const message = document.getElementById('message-field')
-const sendMessage = document.getElementById('send')
+const user = document.getElementById('user-field');
+const message = document.getElementById('message-field');
+const sendMessage = document.getElementById('send');
 
 
 // Create the HTML for the alert banner
 // Todo: compare insertAdjacentHTML() option
 alert.innerHTML = `
-  <div class='alert'>
-    <p><strong>Alert: </strong>You have <strong>6</strong> overdue tasks to complete </p>
-    <p class="alert-close">x</p>
-  </div>
+    <p class="alert-message"><strong>Alert: </strong>You have <strong>6</strong> overdue tasks to complete </p>
+    <button class='alert-close'>X</button>
 `;
 
 alert.addEventListener('click', (e) => {
   const element = e.target;
-
+  
   if (element.classList.contains('alert-close')) {
     alert.style.display = "none";
+    console.log('works');
   }
 });
 
@@ -133,17 +132,17 @@ let mobileChart = new Chart(mobileCanvas, {
 
 sendMessage.addEventListener('click', () => {
   // Ensure user and message fields are filled out
-  if (user.value === '' && message.value === '' ){
+  if (user.value === '' && message.value === '') {
     alert('Please fill out user and message fields before sending');
   }
   else if (user.value === '') {
-    alert("Please fill out user field before sending")
+    alert("Please fill out user field before sending");
   }
-  else if (message.value === ''){
-    alert("Please fill out message field before sending")
+  else if (message.value === '') {
+    alert("Please fill out message field before sending");
   }
   else {
-    alert(`Message successfully sent to: ${user.value}`)
+    alert(`Message successfully sent to: ${user.value}`);
   }
 });
 

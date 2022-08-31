@@ -1,12 +1,18 @@
 //  ===============
 //  Color Variables
 //  ===============
-
+$primary-color-light: rgb(116, 119, 191);
+$primary-color-dark: rgb(77, 76, 114);
+$font-color-light: white;
 
 //  ============
 //  Breakpoints
 //  ============
-
+$breakpoints: (
+        'mobile' 320px,
+        'tablet' 768px,
+        'desktop' 1024px,
+);
 
 //  ======
 //  Fonts
@@ -16,3 +22,4 @@
 //  ======
 //  Others
 //  ======
+$border-margin: 1px solid $primary-color-dark;

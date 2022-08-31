@@ -1,3 +1,12 @@
 // ============
-//
+// mixins
 // ============
+
+@mixin center-text  ($margin-r: auto, $margin-l: auto){
+  margin: auto $margin-r auto $margin-l;
+}
+
+@mixin spacer-margins ($border-l: $border-margin){
+  border-bottom: $border-margin;
+  border-left: $border-l;
+}

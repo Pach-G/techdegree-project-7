@@ -1,8 +1,35 @@
-.bell-notifications {
-  margin: 30px 15px;
+
+.header {
+  grid-area: header;
+  padding: 15px 10px;
+  justify-content: space-between;
+  background-color: $primary-color-light;
+  color: $font-color-light;
 }
 
 .tittle {
-  margin: auto;
-  align-content: start;
+  @include center-text($margin-l: 10px);
+}
+
+.student-img,
+.bell-notifications {
+  @include center-text($margin-r: 5px, $margin-l: 5px)
+}
+
+.student-img {
+  width: 70px;
+  border-radius: 50%;
+}
+
+.bell-notifications {
+  padding-right: 10px;
+  border-right: $border-margin;
+}
+
+.bell {
+  width: 40px;
+}
+
+@media (min-width: 768px) {
+
 }

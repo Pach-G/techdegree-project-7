@@ -1,0 +1,30 @@
+
+.nav {
+  grid-area: nav;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  background-color: $primary-color-dark;
+}
+
+.nav-link {
+  margin: 10px 0 5px;
+  align-content: center;
+  width: 40px;
+}
+
+@media (min-width: 768px) {
+  .nav {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: center;
+    gap: 5px;
+
+    .nav-link {
+      margin: 5px auto;
+      padding: 5px;
+    }
+
+
+  }
+}

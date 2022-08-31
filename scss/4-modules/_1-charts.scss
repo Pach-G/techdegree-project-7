@@ -1,0 +1,36 @@
+//  =============
+//  Traffic Charts
+//  =============
+
+.traffic,
+.daily,
+.mobile {
+  padding-bottom: 15px;
+  @include spacer-margins($border-l: null)
+}
+
+.traffic-nav {
+  margin-right: 30px;
+  padding: 0;
+  justify-content: space-around;
+}
+
+
+//  =============
+//  media queries
+//  =============
+
+@media (min-width: 768px) {
+  .mobile {
+    @include spacer-margins;
+  }
+  .traffic-nav-link {
+    margin: auto 10px;
+  }
+  .traffic-header {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+  }
+}
+
