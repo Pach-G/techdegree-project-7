@@ -1,10 +1,10 @@
 
 .nav {
+  @extend %flex;
   grid-area: nav;
-  display: flex;
   gap: 20px;
   justify-content: center;
-  background-color: $primary-color-dark;
+  background-color: $color-prim-dark;
 }
 
 .nav-link {
@@ -17,14 +17,11 @@
   .nav {
     flex-direction: column;
     justify-content: flex-start;
-    align-content: center;
     gap: 5px;
 
-    .nav-link {
-      margin: 5px auto;
-      padding: 5px;
-    }
-
-
   }
+  .nav-link {
+     margin: 5px auto;
+     padding: 5px;
+   }
 }

@@ -6,10 +6,11 @@
 .daily,
 .mobile {
   padding-bottom: 15px;
-  @include spacer-margins($border-l: null)
+  @include divider($border-l: null)
 }
 
 .traffic-nav {
+  @extend %flex;
   margin-right: 30px;
   padding: 0;
   justify-content: space-around;
@@ -22,7 +23,7 @@
 
 @media (min-width: 768px) {
   .mobile {
-    @include spacer-margins;
+    @include divider;
   }
   .traffic-nav-link {
     margin: auto 10px;

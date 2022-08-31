@@ -6,7 +6,22 @@
   margin: auto $margin-r auto $margin-l;
 }
 
-@mixin spacer-margins ($border-l: $border-margin){
-  border-bottom: $border-margin;
+@mixin divider($border-l: $border){
+  border-bottom: $border;
   border-left: $border-l;
+}
+
+
+@mixin m-q($break) {
+  $value: map-get($breakpoints, $break);
+
+  @if $value == null {
+    @error "`#{$break}` is not a valid breakpoint name.";
+  }
+
+  @else {
+    @media (min-width: $value) {
+      @content;
+    }
+  }
 }
