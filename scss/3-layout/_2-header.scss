@@ -12,17 +12,14 @@
   @include center-text($margin-l: 10px);
 }
 
-.bell-notifications {
-  @include center-text($margin-r: 5px, $margin-l: 5px)
-}
-
 .student-img {
-  @extend .bell-notifications;
+  @include center-text(5px, 5px);
   width: 70px;
   border-radius: 50%;
 }
 
 .bell-notifications {
+  @include center-text(5px, 5px);
   padding-right: 10px;
   border-right: $border;
 }

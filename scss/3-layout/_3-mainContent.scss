@@ -18,21 +18,14 @@
   }
 }
 
-.main-header,
-.alert,
-.traffic,
-.social-stats {
-  @include m-q('tablet') {
-    grid-column: 1 / span 2;
-  }
+.main-header {
+  @extend %flex;
+  @extend %grid-col-1-2;
 }
 
-.daily,
 .members,
 .message {
-  @include m-q('tablet') {
-    grid-column: 1 / span 1;
-  }
+  @extend %grid-col-1-1;
 }
 
 .mobile,
@@ -65,12 +58,6 @@
   }
 }
 
-.social-stats {
-  @extend %grid;
-  grid-template-columns: 1fr;
-  grid-auto-rows: 100px;
-  grid-gap: 40px;
-}
 
 //  ==============
 //  Flexbox layout
@@ -94,10 +81,12 @@
 
 .alert {
   @extend %flex;
+  @extend %grid-col-1-2;
   justify-content: space-between;
   margin: 15px;
   border-radius: 5px;
   background-color: $color-prim-light;
+
 
   &-message {
     padding: 0 15px;

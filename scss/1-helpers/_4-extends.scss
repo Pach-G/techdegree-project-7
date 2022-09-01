@@ -10,3 +10,20 @@
   width: 95vw;
   padding-left: 15px;
 }
+
+%chart {
+  @include divider($border-l: null);
+  padding-bottom: 15px;
+}
+
+%grid-col-1-2 {
+  @include m-q('tablet') {
+    grid-column: 1 / span 2;
+  }
+}
+
+%grid-col-1-1 {
+  @include m-q('tablet') {
+    grid-column: 1 / span 1;
+  }
+}

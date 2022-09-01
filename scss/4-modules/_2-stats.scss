@@ -1,0 +1,7 @@
+.social-stats {
+  @extend %grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 200px;
+  grid-gap: 40px;
+  @extend %grid-col-1-2;
+}

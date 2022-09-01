@@ -2,11 +2,30 @@
 //  Traffic Charts
 //  =============
 
-.traffic,
-.daily,
+.traffic {
+  @extend %chart;
+  @extend %grid-col-1-2;
+}
+
+
+.daily {
+  @extend %chart;
+  @extend %grid-col-1-1;
+}
+
+.traffic-header {
+  @include m-q('tablet') {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+  }
+}
+
 .mobile {
-  padding-bottom: 15px;
-  @include divider($border-l: null)
+  @extend %chart;
+  @include m-q('tablet') {
+    @include divider;
+  }
 }
 
 .traffic-nav {
@@ -14,24 +33,18 @@
   margin-right: 30px;
   padding: 0;
   justify-content: space-around;
-}
 
+  &-link {
+    padding: 10px;
+    @include m-q('tablet') {
+      margin: auto 10px;
+    }
 
-//  =============
-//  media queries
-//  =============
-
-@media (min-width: 768px) {
-  .mobile {
-    @include divider;
-  }
-  .traffic-nav-link {
-    margin: auto 10px;
-  }
-  .traffic-header {
-    display: flex;
-    align-content: center;
-    justify-content: space-between;
+    &:hover {
+      border-style: none;
+      border-radius: 25px;
+      background-color: #7dc28b;
+      color: $font-color-light;
+    }
   }
 }
-
