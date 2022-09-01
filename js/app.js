@@ -1,4 +1,5 @@
-const alert = document.getElementById('alert');
+
+const alertBanner = document.getElementById('alert');
 const trafficCanvas = document.getElementById('traffic-chart');
 const dailyCanvas = document.getElementById('daily-chart');
 const mobileCanvas = document.getElementById('doughnut-chart');
@@ -9,16 +10,16 @@ const sendMessage = document.getElementById('send');
 
 // Create the HTML for the alert banner
 // Todo: compare insertAdjacentHTML() option
-alert.innerHTML = `
+alertBanner.innerHTML = `
     <p class="alert-message"><strong>Alert: </strong>You have <strong>6</strong> overdue tasks to complete </p>
     <button class='alert-close'>X</button>
 `;
 
-alert.addEventListener('click', (e) => {
+alertBanner.addEventListener('click', (e) => {
   const element = e.target;
   
   if (element.classList.contains('alert-close')) {
-    alert.style.display = "none";
+    alertBanner.style.display = "none";
     console.log('works');
   }
 });
