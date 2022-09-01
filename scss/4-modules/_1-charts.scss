@@ -5,6 +5,14 @@
 .traffic {
   @extend %chart;
   @extend %grid-col-1-2;
+
+  &-header {
+    @include m-q('tablet') {
+      display: flex;
+      align-content: center;
+      justify-content: space-between;
+    }
+  }
 }
 
 
@@ -13,13 +21,6 @@
   @extend %grid-col-1-1;
 }
 
-.traffic-header {
-  @include m-q('tablet') {
-    display: flex;
-    align-content: center;
-    justify-content: space-between;
-  }
-}
 
 .mobile {
   @extend %chart;

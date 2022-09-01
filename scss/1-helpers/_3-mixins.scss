@@ -2,13 +2,22 @@
 // mixins
 // ============
 
-@mixin center-text  ($margin-r: auto, $margin-l: auto){
-  margin: auto $margin-r auto $margin-l;
+@mixin margin(
+  $top: auto,
+  $right: auto,
+  $bottom: auto,
+  $left: auto) {
+  margin: $top $right $bottom $left;
 }
 
-@mixin divider($border-l: $border){
+@mixin divider($border-l: $border) {
   border-bottom: $border;
   border-left: $border-l;
+}
+
+@mixin border($br-style: solid, $br-color: $color-sec) {
+  border: 1px $br-style $br-color;
+  border-radius: 5px;
 }
 
 
@@ -17,9 +26,7 @@
 
   @if $value == null {
     @error "`#{$break}` is not a valid breakpoint name.";
-  }
-
-  @else {
+  } @else {
     @media (min-width: $value) {
       @content;
     }

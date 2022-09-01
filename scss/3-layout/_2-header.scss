@@ -9,17 +9,17 @@
 }
 
 .tittle {
-  @include center-text($margin-l: 10px);
+  @include margin($left: 10px);
 }
 
 .student-img {
-  @include center-text(5px, 5px);
+  @include margin($left: 5px, $right: 5px);
   width: 70px;
   border-radius: 50%;
 }
 
 .bell-notifications {
-  @include center-text(5px, 5px);
+  @include margin(5px, 5px);
   padding-right: 10px;
   border-right: $border;
 }
