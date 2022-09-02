@@ -4,7 +4,7 @@
 
 .traffic {
   @extend %chart;
-  @extend %grid-col-1-2;
+  @extend %grid-col-tablet-1-2;
 
   &-header {
     @include m-q('tablet') {
@@ -18,12 +18,14 @@
 
 .daily {
   @extend %chart;
-  @extend %grid-col-1-1;
+  @extend %grid-col-tablet-1-1;
 }
 
 
 .mobile {
   @extend %chart;
+  //@extend %grid-col-2-1;
+
   @include m-q('tablet') {
     @include divider;
   }

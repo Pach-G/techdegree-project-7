@@ -3,7 +3,8 @@
 //  ===============
 $color-prim-light: rgb(116, 119, 191);
 $color-prim-dark: rgb(77, 76, 114);
-$color-sec: lighten($color-prim-dark, 45%);
+$color-sec-dark: lighten($color-prim-dark, 45%);
+$color-sec-light: lighten($color-prim-light, 35%);
 $font-color-light: #ffffff;
 
 //  ============
@@ -23,4 +24,4 @@ $breakpoints: (
 //  ======
 //  Dividers
 //  ======
-$border: 1px solid $color-sec;
+$border: 1px solid $color-sec-dark;

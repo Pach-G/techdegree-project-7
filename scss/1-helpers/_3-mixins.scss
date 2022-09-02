@@ -15,7 +15,7 @@
   border-left: $border-l;
 }
 
-@mixin border($br-style: solid, $br-color: $color-sec) {
+@mixin border($br-style: solid, $br-color: $color-sec-dark) {
   border: 1px $br-style $br-color;
   border-radius: 5px;
 }

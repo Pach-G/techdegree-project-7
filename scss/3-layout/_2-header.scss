@@ -19,7 +19,7 @@
 }
 
 .bell-notifications {
-  @include margin(5px, 5px);
+  @include margin($left: 10px, $right: 5px);
   padding-right: 10px;
   border-right: $border;
 }

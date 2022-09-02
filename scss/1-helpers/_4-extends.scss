@@ -16,15 +16,26 @@
   padding-bottom: 15px;
 }
 
-%grid-col-1-2 {
-  @include m-q('tablet') {
-    grid-column: 1 / span 2;
-  }
-}
-
-%grid-col-1-1 {
+%grid-col-tablet-1-1 {
   @include m-q('tablet') {
     grid-column: 1 / span 1;
   }
 }
 
+%grid-col-tablet-1-2 {
+  @include m-q('tablet') {
+    grid-column: 1 / span 2;
+  }
+}
+
+%grid-col-desktop-1-1 {
+  @include m-q('desktop') {
+    grid-column: 1 / span 1;
+  }
+}
+
+%grid-col-desktop-2-1 {
+  @include m-q('desktop') {
+    grid-column: 2 / span 1;
+  }
+}

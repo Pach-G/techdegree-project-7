@@ -1,0 +1,44 @@
+.social {
+  @extend %grid-col-tablet-1-2;
+
+  &-grid {
+    @extend %grid;
+    gap: 10px;
+    //padding: 0 10px;
+
+    @include m-q('tablet') {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &-container {
+    @include border();
+    @extend %flex;
+    padding: 10px 10px 5px;
+    background-color: $color-sec-light;
+
+    @include m-q('tablet'){
+
+      //margin: 0 10px;
+    //  @include margin(
+    //          $top: 0,
+    //          $right: 10px,
+    //          $bottom: 0,
+    //          $left: 10px)
+    }
+  }
+
+  &-img {
+    @include margin($left: 5px, $right: 0);
+    width: 75px;
+  }
+
+  &-text {
+    @include margin($left: 10px);
+
+    &:nth-child(1) {
+      color: $color-prim-light;
+    }
+  }
+
+}

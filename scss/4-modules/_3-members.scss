@@ -1,0 +1,39 @@
+.members {
+  @extend %grid;
+  @extend %grid-col-tablet-1-2;
+  @extend %grid-col-desktop-1-1;
+
+  &-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include m-q('tablet') {
+      flex-direction: row;
+    }
+  }
+
+  &-profile-img {
+    width: 100px;
+    border-radius: 50%;
+  }
+
+  &-text-wrapper {
+    @include margin();
+    @extend %flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include m-q('tablet') {
+      @include margin($left: 10px);
+      align-content: flex-start;
+    }
+
+    & p {
+      @include margin($top: 10px);
+      @include m-q('tablet') {
+        @include margin($top: 10px, $left: 5px)
+      }
+    }
+  }
+}
