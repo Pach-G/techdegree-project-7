@@ -1,23 +1,44 @@
+// =========
+// Variables
+// =========
 
+//  Alert banner
+//  ------------
 const alertBanner = document.getElementById('alert');
+
+//  Charts
+//  ------
 const trafficCanvas = document.getElementById('traffic-chart');
 const dailyCanvas = document.getElementById('daily-chart');
 const mobileCanvas = document.getElementById('doughnut-chart');
-const user = document.getElementById('user-field');
+
+//  New Members
+//  -----------
+const membersContainer = document.getElementById('members-container');
+
+// Message User
+// ------------
+const userField = document.getElementById('user-field');
 const message = document.getElementById('message-field');
 const sendMessage = document.getElementById('send');
 
 
-// Create the HTML for the alert banner
-// Todo: compare insertAdjacentHTML() option
+//  ===============
+//  Alert
+//  ===============
+//  TOdo:
+//   -Notification bell button display dropdown
+//   -Compare insertAdjacentHTML() option for alertBanner.innerHTLM
+
+//  Create the HTML for the alert banner
 alertBanner.innerHTML = `
     <p class="alert-message"><strong>Alert: </strong>You have <strong>6</strong> overdue tasks to complete </p>
-    <button class='alert-close'>X</button>
-`;
+    <button class='alert-close'>X</button>`;
 
+//  Remove alert banner
 alertBanner.addEventListener('click', (e) => {
   const element = e.target;
-  
+
   if (element.classList.contains('alert-close')) {
     alertBanner.style.display = "none";
     console.log('works');
@@ -25,7 +46,13 @@ alertBanner.addEventListener('click', (e) => {
 });
 
 
-// Create traffic chart
+// ======
+// Charts
+// ======
+// TODO: - add more options to personalize charts
+
+//  Traffic
+//  -------
 let trafficData = {
   labels: [
     "16-22", "23-29", "30-5", "6-12", "13-19", "20-26",
@@ -42,8 +69,10 @@ let trafficData = {
   ],
 };
 
-// TODO: - add more options to personalized it
 let trafficOptions = {
+  layout: {
+    padding: 10,
+  },
   backgroundColor: 'rgba(112, 104, 201, .5)',
   fill: true,
   aspectRatio: 2.5,
@@ -56,6 +85,7 @@ let trafficOptions = {
   },
 };
 
+//  Create traffic chart
 let trafficChart = new Chart(trafficCanvas, {
   type: 'line',
   data: trafficData,
@@ -63,7 +93,8 @@ let trafficChart = new Chart(trafficCanvas, {
 });
 
 
-// Data for daily traffic bar chart
+//  Daily traffic bar chart
+//  -----------------------
 const dailyData = {
   labels: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
   datasets: [
@@ -77,6 +108,9 @@ const dailyData = {
 };
 
 const dailyOptions = {
+  layout: {
+    padding: 10,
+  },
   scales: {
     y: {
       beginAtZero: true,
@@ -95,7 +129,10 @@ let dailyChart = new Chart(dailyCanvas, {
   options: dailyOptions,
 });
 
-// Mobile users chart
+
+// ===========================
+// Mobile Users Doughnut Chart
+// ===========================
 const mobileData = {
   labels: ['Desktop', 'Tablet', 'Phones'],
   datasets: [
@@ -113,6 +150,9 @@ const mobileData = {
 };
 
 const mobileOptions = {
+  layout: {
+    padding: 10,
+  },
   aspectRatio: 1.9,
   plugins: {
     legend: {
@@ -131,22 +171,62 @@ let mobileChart = new Chart(mobileCanvas, {
   options: mobileOptions,
 });
 
+
+//  ===========
+//  New Members
+//  ===========
+// Todo:
+//  -add users dynamically
+//  -autocomplete user search field
+
+const createNewMembers = (array) => {
+  let html = '';
+
+  for (let i = 0; i < array.length; i++) {
+    html +=
+      `<img class="members-profile-img" 
+          src="images/members/member-${i}.jpg" 
+          alt="student profile image">
+        <div class="members-text-wrapper">
+          <p>${array[i].name}</p>
+          <p>
+            <a href="mailto:diego_ggv@pm.me"><strong>Email: </strong>diego_ggv@pm.me</a></p>
+        </div>
+        <p>00/00/00</p>`;
+  }
+};
+
+createNewMembers(membersInfo);
+
+membersContainer.insertAdjacentHTML('afterbegin',
+                                       createNewMembers(membersInfo));
+
+console.log(createNewMembers.length);
+
+//  ============
+//  Message User
+//  ============
+
 sendMessage.addEventListener('click', () => {
   // Ensure user and message fields are filled out
-  if (user.value === '' && message.value === '') {
+  if (userField.value === '' && message.value === '') {
     alert('Please fill out user and message fields before sending');
   }
-  else if (user.value === '') {
+  else if (userField.value === '') {
     alert("Please fill out user field before sending");
   }
   else if (message.value === '') {
     alert("Please fill out message field before sending");
   }
   else {
-    alert(`Message successfully sent to: ${user.value}`);
+    alert(`Message successfully sent to: ${userField.value}`);
   }
 });
 
+
+//  ========
+//  Settings
+//  ========
 
 
 
