@@ -3,15 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!--  Stylesheets <-->
+
+  <!--  Stylesheets -->
+  <!--  =========== -->
   <link rel="stylesheet" href="css/app.css">
   <link rel="stylesheet" href="css/css-toggle-switch-master/dist/toggle-switch.css">
-  <!--    favicon links -->
+
+  <!--    favicon links  -->
+  <!--    =============  -->
   <link rel="apple-touch-icon" sizes="180x180" href="svg/favicon_io/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="svg/favicon_io/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="svg/favicon_io/favicon-16x16.png">
   <link rel="manifest" href="svg/favicon_io/site.webmanifest">
-  <!--    font links -->
+
+  <!--    font links  -->
+  <!--    ==========  -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap"
@@ -38,16 +44,18 @@
     https://css-tricks.com/data-uris/-->
     <img class="student-img" src="images/diego-g.jpg" alt="student image">
     <h3>Diego Gutierrez</h3>
-
   </header>
-  <!-- navigation -->
+
+  <!--  navigation  -->
+  <!--  ==========  -->
   <nav class="nav">
     <a class="nav-link" href="#"><img src="svg/home.svg" alt="home navigation link"></a>
     <a class="nav-link" href="#graphs"><img src="svg/bar-chart.svg"
                                             alt="charts navigation link"></a>
-    <a class="nav-link" href="#social"><img src="svg/members.svg" alt="members navigation link"></a>
-    <a class="nav-link"
-       href="#settings"><img src="svg/settings.svg" alt="settings navigation link"></a>
+    <a class="nav-link" href="#social"><img src="svg/members.svg"
+                                            alt="members navigation link"></a>
+    <a class="nav-link" href="#settings"><img src="svg/settings.svg"
+                                              alt="settings navigation link"></a>
   </nav>
 
   <main class="main">
@@ -55,7 +63,9 @@
       <h2 class="headline">Dashboard</h2>
       <div class="tab"></div>
     </div>
-    <!--  alert banner-->
+
+    <!--  alert banner  -->
+    <!--  ============  -->
     <div id="alert" class="alert">
       <!--    dynamically inserted alerts-->
     </div>
@@ -88,7 +98,7 @@
     <section class="mobile">
       <h3>MOBILE USERS</h3>
       <div class="widget-container-half">
-        <!--       element bar graph will attach to-->
+        <!--  element bar graph will attach to  -->
         <canvas id="doughnut-chart"></canvas>
       </div>
     </section>
@@ -139,28 +149,18 @@
     </section>
 
     <!--    New members widget  -->
-    <section class="members">
+    <!--    ==================  -->
+    <section id="members" class="members">
       <h3>New Members</h3>
-
-      <!--    TODO: add members dynamically -->
-      <div class="members-container">
-        <img class="members-profile-img" src="images/diego-g.jpg" alt="student profile image">
-        <div class="members-text-wrapper">
-          <p>Diego Gutierrez</p>
-          <p>
-            <a href="mailto:diego_ggv@pm.me"><strong>Email: </strong>diego_ggv@pm.me</a></p>
-        </div>
-        <p>00/00/00</p>
-      </div>
+      <!--  new members added dynamically -->
     </section>
 
     <section class="recent-activity">
       <h3>Recent Activity</h3>
-
-      <!--    TODO: add members dynamically -->
-      <div class="member-container">
-        <img class="profile-img" src="#" alt="">
-        <div class="text-wrapper">
+      <!--  recent activity added dynamically -->
+      <div class="members-container">
+        <img class="members-profile-img" src="images/diego-g.jpg" alt="student profile image">
+        <div class=members-text-wrapper>
           <p>comment</p>
           <p>00/00/00</p>
         </div>
@@ -169,7 +169,8 @@
     </section>
 
 
-    <!--    messaging widget -->
+    <!--    messaging widget  -->
+    <!--    ================  -->
     <section class="message">
       <h3>Message User</h3>
 
@@ -180,38 +181,32 @@
             class="form-field"
             name="search"
             type="text"
-            placeholder="Search for user"
-        />
+            placeholder="Search for user"/>
 
         <label for="message-field"></label>
         <textarea
             class="form-area"
             id="message-field"
-            placeholder="Message for user"
-        ></textarea>
+            placeholder="Message for user"></textarea>
 
         <button id="send" class="btn-send-msg" type="button">SEND</button>
       </form>
     </section>
 
     <!--  local settings widget -->
+    <!--  ===================== -->
     <section id='settings' class="settings-container">
       <h3>Settings</h3>
 
       <label class="switch-light switch-material" onclick="">
         <input type="checkbox">
-
-        <strong>
-          Wireless
-        </strong>
-
+        <strong>Wireless</strong>
         <span>
-      <span>Off</span>
-      <span>On</span>
-      <a></a>
-    </span>
+          <span>Off</span>
+          <span>On</span>
+          <a></a>
+        </span>
       </label>
-
 
       <label for="timezone"></label>
       <select class="form-field" id="timezone">
@@ -226,11 +221,12 @@
     </section>
   </main>
 
-  <!--  <footer>-->
-
-  <!--  </footer>-->
 </div>
 </body>
+
+<!--  Scripts -->
+<!--  ======= -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type="text/javascript" src="js/membersInfo.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
 </html>
