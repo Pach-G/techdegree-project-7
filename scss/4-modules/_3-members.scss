@@ -2,13 +2,17 @@
   @extend %grid;
   @extend %grid-col-tablet-1-2;
   @extend %grid-col-desktop-1-1;
+  @include divider($left: null);
 
   &-container {
-    display: flex;
+
+    @include padding($top: 10px);
+    @extend %flex;
+
     flex-direction: column;
     align-items: center;
 
-    @include m-q('tablet') {
+    @include mQ('tablet') {
       flex-direction: row;
     }
   }
@@ -24,16 +28,21 @@
     flex-direction: column;
     align-items: center;
 
-    @include m-q('tablet') {
+    @include mQ('tablet') {
       @include margin($left: 10px);
       align-content: flex-start;
     }
 
     & p {
       @include margin($top: 10px);
-      @include m-q('tablet') {
+      @include mQ('tablet') {
         @include margin($top: 10px, $left: 5px)
       }
     }
   }
+}
+//  Todo: add padding-top: 15px to class .div
+.div {
+  @include divider($left: null);
+  margin: 0 15px;
 }

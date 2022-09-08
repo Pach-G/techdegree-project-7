@@ -1,5 +1,5 @@
 //  =============
-//  Traffic Charts
+//  Traffic Chart
 //  =============
 
 .traffic {
@@ -7,39 +7,24 @@
   @extend %grid-col-tablet-1-2;
 
   &-header {
-    @include m-q('tablet') {
+    @include mQ('tablet') {
       display: flex;
       align-content: center;
       justify-content: space-between;
     }
   }
-}
 
-
-.daily {
-  @extend %chart;
-  @extend %grid-col-tablet-1-1;
-}
-
-
-.mobile {
-  @extend %chart;
-  //@extend %grid-col-2-1;
-
-  @include m-q('tablet') {
-    @include divider;
+  &-nav {
+    @extend %flex;
+    margin-right: 30px;
+    padding: 0;
+    justify-content: space-around;
   }
-}
 
-.traffic-nav {
-  @extend %flex;
-  margin-right: 30px;
-  padding: 0;
-  justify-content: space-around;
-
-  &-link {
+  &-nav-link {
     padding: 10px;
-    @include m-q('tablet') {
+
+    @include mQ('tablet') {
       margin: auto 10px;
     }
 
@@ -51,3 +36,24 @@
     }
   }
 }
+
+
+//  =============
+//  Daily Traffic
+//  =============
+.daily {
+  @extend %chart;
+  @extend %grid-col-tablet-1-1;
+}
+
+//  ============
+//  Mobile Users
+//  ============
+.mobile {
+  @extend %chart;
+
+  @include mQ('tablet') {
+    @include divider;
+  }
+}
+

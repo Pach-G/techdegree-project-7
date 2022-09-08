@@ -1,3 +1,19 @@
+%chart {
+  @include divider($left: null);
+  padding-bottom: 15px;
+}
+
+%grid-col-tablet-1-1 {
+  @include mQ('tablet') {
+    grid-column: 1 / span 1;
+  }
+}
+
+%grid-col-tablet-1-2 {
+  @include mQ('tablet') {
+    grid-column: 1 / span 2;
+  }
+}
 %grid {
   display: grid;
 }
@@ -6,36 +22,14 @@
   display: flex;
 }
 
-%widget {
-  width: 95vw;
-  padding-left: 15px;
-}
-
-%chart {
-  @include divider($border-l: null);
-  padding-bottom: 15px;
-}
-
-%grid-col-tablet-1-1 {
-  @include m-q('tablet') {
-    grid-column: 1 / span 1;
-  }
-}
-
-%grid-col-tablet-1-2 {
-  @include m-q('tablet') {
-    grid-column: 1 / span 2;
-  }
-}
-
 %grid-col-desktop-1-1 {
-  @include m-q('desktop') {
+  @include mQ('desktop') {
     grid-column: 1 / span 1;
   }
 }
 
 %grid-col-desktop-2-1 {
-  @include m-q('desktop') {
+  @include mQ('desktop') {
     grid-column: 2 / span 1;
   }
 }

@@ -14,7 +14,11 @@ const mobileCanvas = document.getElementById('doughnut-chart');
 
 //  New Members
 //  -----------
-const membersContainer = document.getElementById('members-container');
+const membersContainer = document.getElementById('members');
+
+//  Recent Activity
+//  ---------------
+const recentActContainer = document.getElementById('recent-activity');
 
 // Message User
 // ------------
@@ -23,9 +27,79 @@ const message = document.getElementById('message-field');
 const sendMessage = document.getElementById('send');
 
 
-//  ===============
+// =========
+// Functions
+// =========
+
+//  Random date generator
+//  ---------------------
+const getRandomDate = () => {
+  let date;
+
+//set a range of years
+  const min = 2020;
+  const max = 2022;
+
+// Math.ceil prevents the value from being 0;
+  let month = Math.ceil(Math.random() * 12);
+  let day = Math.ceil(Math.random() * 28);
+  let year = Math.floor(Math.random() * (max - min) + min);
+
+//this ensures that the format will stay mm/dd/yyyy;
+  if (month < 10) {
+    month = "0" + month;
+  }
+  if (day < 10) {
+    day = "0" + day;
+  }
+//concatenates random date in mm/dd/yyyy format;
+  date = month + "/" + day + "/" + year;
+
+  return date;
+};
+
+
+const getRandomTime = () => {
+  let time;
+
+
+// Math.ceil prevents the value from being 0;
+  let hour = Math.ceil(Math.random() * 72);
+
+  if (hour > 24) {
+    hour = Math.floor(hour/24);
+
+    if (hour === 1 ){
+    time = hour + ' day ago'
+    }
+    else {
+    time = hour + ' days ago'
+    }
+
+    return time
+  }
+  time = hour + ' hours ago';
+
+  return time;
+};
+
+
+//  Random object Property Selector
+//  -------------------------------
+const getRandomProperty = function (obj) {
+  // Generates a random value taking the length of the given number
+  const ranNum = Math.floor(Math.random() * 3 );
+  // Stores property value in a constant taking random number as the array index value
+  const activity = obj.activity[ranNum]
+  const platform = obj.platform[ranNum]
+
+  return activity + ' ' + platform.bold();
+}
+
+
+//  ======
 //  Alert
-//  ===============
+//  ======
 //  TOdo:
 //   -Notification bell button display dropdown
 //   -Compare insertAdjacentHTML() option for alertBanner.innerHTLM
@@ -44,7 +118,6 @@ alertBanner.addEventListener('click', (e) => {
     console.log('works');
   }
 });
-
 
 // ======
 // Charts
@@ -91,7 +164,6 @@ let trafficChart = new Chart(trafficCanvas, {
   data: trafficData,
   options: trafficOptions,
 });
-
 
 //  Daily traffic bar chart
 //  -----------------------
@@ -175,33 +247,63 @@ let mobileChart = new Chart(mobileCanvas, {
 //  ===========
 //  New Members
 //  ===========
-// Todo:
-//  -add users dynamically
-//  -autocomplete user search field
 
 const createNewMembers = (array) => {
   let html = '';
 
   for (let i = 0; i < array.length; i++) {
     html +=
-      `<img class="members-profile-img" 
-          src="images/members/member-${i}.jpg" 
+      `<div id="members-container" class="members-container">
+        <img class="members-profile-img"
+          src="images/members/member-${i}.jpg"
           alt="student profile image">
         <div class="members-text-wrapper">
-          <p>${array[i].name}</p>
+          <p>${array[i].name} ${array[i].lastName}</p>
           <p>
-            <a href="mailto:diego_ggv@pm.me"><strong>Email: </strong>diego_ggv@pm.me</a></p>
+            <a href="mailto:diego_ggv@pm.me">
+            <strong>Email: </strong>${array[i].name.toLowerCase()}${array[i].lastName.toLowerCase()}@example.com</a>
+          </p>
         </div>
-        <p>00/00/00</p>`;
+        <p>${getRandomDate()}</p>
+      </div>
+      <div class = "div"></div>`;
   }
+  return html;
 };
 
-createNewMembers(membersInfo);
+membersContainer.insertAdjacentHTML('beforeend', createNewMembers(membersInfo));
 
-membersContainer.insertAdjacentHTML('afterbegin',
-                                       createNewMembers(membersInfo));
+//  ===============
+//  Recent Activity
+//  ===============
+// Todo:
+//  -autocomplete user search field
 
-console.log(createNewMembers.length);
+
+const recentActivity = (user, activity) => {
+  let html = '';
+
+  for (let i = 0; i < user.length; i++) {
+    html +=
+      `
+      <div id="resent-activity-container" class="members-container">
+        <img class="members-profile-img"
+        src="images/members/member-${i}.jpg"
+        alt="student profile image">
+        <div class=members-text-wrapper>
+          <p>${user[i].name} ${user[i].lastName} ${getRandomProperty(recentActivityInfo)}</p>
+          <p>${getRandomTime()}</p>
+        </div>
+        <p class="recent-activity-arrow"> > </p>
+      </div>
+      <div class = "div"></div>
+      `;
+  }
+  return html;
+};
+
+recentActContainer.insertAdjacentHTML('beforeend', recentActivity(membersInfo, recentActivityInfo));
+
 
 //  ============
 //  Message User

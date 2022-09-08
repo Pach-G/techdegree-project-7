@@ -10,9 +10,17 @@
   margin: $top $right $bottom $left;
 }
 
-@mixin divider($border-l: $border) {
+@mixin padding(
+  $top: null,
+  $right: 10px,
+  $bottom: 10px,
+  $left: 10px) {
+  padding: $top $right $bottom $left;
+}
+
+@mixin divider($left: $border) {
   border-bottom: $border;
-  border-left: $border-l;
+  border-left: $left;
 }
 
 @mixin border($br-style: solid, $br-color: $color-sec-dark) {
@@ -20,13 +28,13 @@
   border-radius: 5px;
 }
 
-
-@mixin m-q($break) {
+@mixin mQ($break) {
   $value: map-get($breakpoints, $break);
 
   @if $value == null {
     @error "`#{$break}` is not a valid breakpoint name.";
-  } @else {
+  }
+  @else {
     @media (min-width: $value) {
       @content;
     }

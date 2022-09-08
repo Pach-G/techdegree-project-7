@@ -1,4 +1,18 @@
 .recent-activity {
+  @include divider($left: null);
   @extend %grid-col-tablet-1-2;
   @extend %grid-col-desktop-2-1;
+
+  @include mQ("desktop") {
+    @include divider();
+  }
+
+
+  &-arrow {
+    display: none;
+
+    @include mQ('tablet') {
+      display: contents;
+    }
+  }
 }

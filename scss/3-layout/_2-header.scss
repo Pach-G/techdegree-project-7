@@ -1,15 +1,15 @@
 
 .header {
+  @include padding($top: 15px, $bottom: 15px);
   @extend %flex;
   grid-area: header;
-  padding: 15px 10px;
   justify-content: space-between;
   background-color: $color-prim-light;
   color: $font-color-light;
 }
 
 .tittle {
-  @include margin($left: 10px);
+  @include margin($left: 0);
 }
 
 .student-img {

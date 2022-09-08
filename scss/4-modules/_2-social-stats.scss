@@ -1,31 +1,27 @@
 .social {
+  @include padding($bottom: 15px, $top: 0);
+  @include divider($left: null);
   @extend %grid-col-tablet-1-2;
+
+  & h3 {
+    padding: 0;
+  }
 
   &-grid {
     @extend %grid;
+    //@include padding();
     gap: 10px;
-    //padding: 0 10px;
 
-    @include m-q('tablet') {
+    @include mQ('tablet') {
       grid-template-columns: repeat(3, 1fr);
     }
   }
 
   &-container {
     @include border();
+    @include padding($top: 10px);
     @extend %flex;
-    padding: 10px 10px 5px;
     background-color: $color-sec-light;
-
-    @include m-q('tablet'){
-
-      //margin: 0 10px;
-    //  @include margin(
-    //          $top: 0,
-    //          $right: 10px,
-    //          $bottom: 0,
-    //          $left: 10px)
-    }
   }
 
   &-img {
@@ -40,5 +36,4 @@
       color: $color-prim-light;
     }
   }
-
 }
