@@ -21,23 +21,6 @@ const membersInfo = [
   },
 ];
 
-//  =====================
-//  Members Activity info
-//  =====================
-
-// const recentActivityInfo = {
-//   platform: [
-//     'Facebook',
-//     'Instagram',
-//     'WebApps',
-//   ],
-//   activity: [
-//     "commented on WebApp's SEO tips",
-//     "posted on Instagram",
-//     "liked the post on Facebook's Changes for 2023",
-//   ],
-// };
-
 const recentActivityInfo = {
   platform: [
     "Facebook's Changes for 2023",
