@@ -160,13 +160,16 @@
       <!--  recent activity added dynamically -->
     </section>
 
-
     <!--    messaging widget  -->
     <!--    ================  -->
     <section class="message">
       <h3>Message User</h3>
 
-      <form id="widget-container">
+      <form id="widget-container"
+            class="message-container"
+            action="index.html"
+            method="post">
+
         <label for="user-field"></label>
         <input
             id="user-field"
@@ -177,11 +180,11 @@
 
         <label for="message-field"></label>
         <textarea
-            class="form-area"
             id="message-field"
+            class="form-area"
             placeholder="Message for user"></textarea>
 
-        <button id="send" class="btn-send-msg" type="button">SEND</button>
+        <button id="send" class="btn-send" type="button">SEND</button>
       </form>
     </section>
 

@@ -14,7 +14,8 @@
   $top: null,
   $right: 10px,
   $bottom: 10px,
-  $left: 10px) {
+  $left: 10px
+) {
   padding: $top $right $bottom $left;
 }
 
@@ -23,8 +24,12 @@
   border-left: $left;
 }
 
-@mixin border($br-style: solid, $br-color: $color-sec-dark) {
-  border: 1px $br-style $br-color;
+@mixin border(
+  $br-w: 1px,
+  $br-style: solid,
+  $br-color: $color-sec-dark
+) {
+  border: $br-w $br-style $br-color;
   border-radius: 5px;
 }
 

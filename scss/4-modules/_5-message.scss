@@ -1,4 +1,29 @@
 .message {
   @extend %grid-col-tablet-1-2;
   @extend %grid-col-desktop-1-1;
+
+  &-container {
+    @include padding();
+    @extend %flex;
+    flex-direction: column;
+  }
+}
+
+.form-field {
+  @include border($br-w: 2px);
+  background-color: $color-sec-light;
+  margin-bottom: 15px;
+  padding: 10px;
+}
+
+.form-area {
+  @extend .form-field;
+  min-height: 150px;
+}
+
+.btn-send {
+  @include border();
+  @include padding();
+  background-color: $color-prim-light;
+  color: $font-color-light;
 }
