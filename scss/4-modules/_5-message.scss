@@ -3,8 +3,8 @@
   @extend %grid-col-desktop-1-1;
 
   &-container {
-    @include padding();
     @extend %flex;
+    align-items: stretch;
     flex-direction: column;
   }
 }
@@ -22,8 +22,11 @@
 }
 
 .btn-send {
+  @include margin();
   @include border();
-  @include padding();
+  @include padding($top: 15px, $bottom: 15px);
   background-color: $color-prim-light;
   color: $font-color-light;
+  align-self: stretch;
+  width: 100%;
 }
