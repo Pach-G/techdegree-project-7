@@ -29,6 +29,7 @@
     }
 
     &:hover {
+      @extend %cursor;
       border-style: none;
       border-radius: 25px;
       background-color: #7dc28b;
