@@ -27,10 +27,11 @@
 @mixin border(
   $br-w: 1px,
   $br-style: solid,
-  $br-color: $color-sec-dark
+  $br-color: $color-sec-dark,
+  $br-rad: 5px
 ) {
   border: $br-w $br-style $br-color;
-  border-radius: 5px;
+  border-radius: $br-rad;
 }
 
 @mixin mQ($break) {

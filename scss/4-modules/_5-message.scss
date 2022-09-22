@@ -26,7 +26,7 @@
   @include border();
   @include padding($top: 15px, $bottom: 15px);
   background-color: $color-prim-light;
-  color: $font-color-light;
+  color: $color-font-light;
   align-self: stretch;
   width: 100%;
 }

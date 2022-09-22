@@ -7,7 +7,7 @@
   <!--  Stylesheets -->
   <!--  =========== -->
   <link rel="stylesheet" href="css/app.css">
-<!--  <link rel="stylesheet" href="css/css-toggle-switch-master/dist/toggle-switch.css">-->
+  <!--  <link rel="stylesheet" href="css/css-toggle-switch-master/dist/toggle-switch.css">-->
 
   <!--    favicon links  -->
   <!--    =============  -->
@@ -202,14 +202,19 @@
     <section id='settings' class="settings-container">
       <h3>Settings</h3>
 
-      <label for="switch" class="" ></label>
-        <input id="switch" type="checkbox">
-        <!--        <strong>Wireless</strong>-->
-        <span>
-          <span>Off</span>
-          <span>On</span>
-          <a></a>
-        </span>
+      <div class="switch">
+        <input type="checkbox"
+               name="onoffswitch"
+               class="switch-checkbox"
+               id="myonoffswitch"
+               tabindex="0"
+               checked>
+        <label class="switch-label" for="myonoffswitch">
+          <span class="switch-inner"></span>
+          <span class="switch-switch"></span>
+        </label>
+      </div>
+
 
 
       <label for="timezone"></label>

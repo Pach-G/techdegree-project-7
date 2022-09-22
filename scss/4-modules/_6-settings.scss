@@ -1,6 +1,86 @@
-.settings-container{
+.settings-container {
   @extend %grid-col-tablet-1-2;
   @extend %grid-col-desktop-2-1;
 
+}
 
+//  Switch
+//  ======
+.switch {
+  position: relative;
+  width: 90px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+
+  &-checkbox {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &-label {
+    @include border($br-w: 2, $br-rad: 50px);
+    @extend %cursor;
+    @extend %block;
+    overflow: hidden;
+
+  }
+
+  &-inner {
+    @extend %block;
+    width: 200%;
+    margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+  }
+
+  &-inner:before,
+  &-inner:after {
+    @extend %block;
+    float: left;
+    width: 50%;
+    height: 30px;
+    padding: 0;
+    line-height: 30px;
+    color: $color-font-light;
+    font-size: 14px;
+    font-family: Trebuchet, Arial, sans-serif;
+    font-weight: bold;
+    box-sizing: border-box;
+  }
+
+  &-inner:before {
+    content: "ON";
+    padding-left: 10px;
+    background-color: $color-prim-light;
+    color: $color-font-light;
+  }
+
+  &-inner:after {
+    content: "OFF";
+    padding-right: 10px;
+    background-color: $color-prim-dark;
+    text-align: right;
+  }
+
+  &-switch {
+    @include border($br-w: 2, $br-rad: 50%);
+    @extend %block;
+    width: 18px;
+    margin: 6px;
+    background: $color-font-light;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 56px;
+    transition: all 0.3s ease-in 0s;
+  }
+
+  &-checkbox:checked + &-label &-inner {
+    margin-left: 0;
+  }
+
+  &-checkbox:checked + &-label &-switch {
+    right: 0;
+  }
 }

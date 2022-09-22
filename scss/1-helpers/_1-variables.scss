@@ -5,7 +5,8 @@ $color-prim-light: rgb(116, 119, 191);
 $color-prim-dark: rgb(77, 76, 114);
 $color-sec-dark: lighten($color-prim-dark, 45%);
 $color-sec-light: lighten($color-prim-light, 35%);
-$font-color-light: #ffffff;
+$color-font-light: rgb(255, 255, 255);
+$color-font-dark: rgba(255, 255, 255, 0.50);
 
 //  ============
 //  Breakpoints
