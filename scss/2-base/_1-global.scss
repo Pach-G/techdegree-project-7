@@ -54,3 +54,13 @@ select,
 button {
   @extend %cursor;
 }
+
+button{
+  @include margin($bottom: 20px);
+  @include border();
+  @include padding($top: 15px, $bottom: 15px);
+  background-color: $color-prim-light;
+  color: $color-font-light;
+  align-self: stretch;
+  width: 100%;
+}

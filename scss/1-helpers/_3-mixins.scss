@@ -19,8 +19,8 @@
   padding: $top $right $bottom $left;
 }
 
-@mixin divider($left: $border) {
-  border-bottom: $border;
+@mixin divider($left: $border, $bottom: $border) {
+  border-bottom: $bottom;
   border-left: $left;
 }
 

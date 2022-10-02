@@ -163,6 +163,8 @@
       <!--  new members added dynamically -->
     </section>
 
+    <!--    Recent Activity widget  -->
+    <!--    ================  -->
     <section id="recent-activity" class="recent-activity">
       <h3>Recent Activity</h3>
       <!--  recent activity added dynamically -->
@@ -202,19 +204,37 @@
     <section id='settings' class="settings-container">
       <h3>Settings</h3>
 
-      <div class="switch">
-        <input type="checkbox"
-               name="onoffswitch"
-               class="switch-checkbox"
-               id="myonoffswitch"
-               tabindex="0"
-               checked>
-        <label class="switch-label" for="myonoffswitch">
-          <span class="switch-inner"></span>
-          <span class="switch-switch"></span>
-        </label>
+      <div class="switch-container">
+        <p>Send Email Notifications</p>
+        <div class="switch">
+          <input type="checkbox"
+                 name="switch"
+                 class="switch-checkbox"
+                 id="switch-email"
+                 tabindex="0"
+                 checked>
+          <label class="switch-label" for="switch-email">
+            <span class="switch-inner"></span>
+            <span class="switch-switch"></span>
+          </label>
+        </div>
       </div>
 
+      <div class="switch-container">
+        <p>Set Profile to Public</p>
+        <div class="switch">
+          <input type="checkbox"
+                 name="switch"
+                 class="switch-checkbox"
+                 id="switch-profile"
+                 tabindex="0"
+                 checked>
+          <label class="switch-label" for="switch-profile">
+            <span class="switch-inner"></span>
+            <span class="switch-switch"></span>
+          </label>
+        </div>
+      </div>
 
 
       <label for="timezone"></label>

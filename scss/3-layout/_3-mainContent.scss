@@ -81,10 +81,9 @@
   }
 }
 
-//  Todo: add padding-top: 15px to class .div
 .div {
   @include divider($left: null);
-  margin: 0 15px;
+  margin: 10px 15px;
 
   &:last-child {
     display: none;

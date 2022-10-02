@@ -1,7 +1,12 @@
 .message {
+  @include divider($left: null);
   @extend %grid-col-tablet-1-2;
   @extend %grid-col-desktop-1-1;
 
+  @include mQ("desktop"){
+    @include divider($bottom: null);
+    //@include divider($bottom: null, $left: null);
+  }
   &-container {
     @extend %flex;
     align-items: stretch;
@@ -19,14 +24,4 @@
 .form-area {
   @extend .form-field;
   min-height: 150px;
-}
-
-.btn-send {
-  @include margin();
-  @include border();
-  @include padding($top: 15px, $bottom: 15px);
-  background-color: $color-prim-light;
-  color: $color-font-light;
-  align-self: stretch;
-  width: 100%;
 }
