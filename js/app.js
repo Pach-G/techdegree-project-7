@@ -2,6 +2,13 @@
 // Variables
 // =========
 
+//  Dropdown Messages
+//  -----------------
+const bell = document.getElementById("bell");
+const greenDot = document.getElementById('green-dot');
+const notifications = document.getElementById('notifications');
+const notificationsUl = document.getElementsByClassName('notifications-messages');
+
 //  Alert banner
 //  ------------
 const alertBanner = document.getElementById('alert');
@@ -67,16 +74,16 @@ const getRandomTime = () => {
   let hour = Math.ceil(Math.random() * 72);
 
   if (hour > 24) {
-    hour = Math.floor(hour/24);
+    hour = Math.floor(hour / 24);
 
-    if (hour === 1 ){
-    time = hour + ' day ago'
+    if (hour === 1) {
+      time = hour + ' day ago';
     }
     else {
-    time = hour + ' days ago'
+      time = hour + ' days ago';
     }
 
-    return time
+    return time;
   }
   time = hour + ' hours ago';
 
@@ -88,13 +95,13 @@ const getRandomTime = () => {
 //  -------------------------------
 const getRandomProperty = function (obj) {
   // Generates a random value taking the length of the given number
-  const ranNum = Math.floor(Math.random() * 3 );
+  const ranNum = Math.floor(Math.random() * 3);
   // Stores property value in a constant taking random number as the array index value
-  const activity = obj.activity[ranNum]
-  const platform = obj.platform[ranNum]
+  const activity = obj.activity[ranNum];
+  const platform = obj.platform[ranNum];
 
   return activity + ' ' + platform.bold();
-}
+};
 
 
 //  ======
@@ -103,6 +110,70 @@ const getRandomProperty = function (obj) {
 //  TOdo:
 //   -Notification bell button display dropdown
 //   -Compare insertAdjacentHTML() option for alertBanner.innerHTLM
+
+//  Notification Dropdown
+//  ---------------------
+notifications.insertAdjacentHTML(
+  'afterbegin',
+  `<h3 class="notifications-header">Notifications</h3>
+          <ul class="notifications-messages">
+            <li class="dropdown-message">
+              <p>new friend request</p>
+              <p class="close">X</p>
+            </li>
+              
+            <li class="dropdown-message">
+              <p>your comment on @page is trending</p>
+              <p class="close">X</p>
+            </li>
+  
+            <li class="dropdown-message">
+              <p>You have 6 new messages</p>
+              <p class="close">X</p>
+            </li>
+          </ul>
+          <div class="viewAll">
+            <p>View All Notifications</p>
+          </div>`,
+);
+
+bell.addEventListener("click", (e) => {
+  if (e.target.id === 'bell') {
+    const bell = e.target;
+    const action = bell.classList;
+
+    const nameAction = {
+      show: function () {
+        notifications.style.display = 'flex';
+        greenDot.style.display = 'none';
+        bell.classList = 'hide';
+      },
+      hide: function () {
+        notifications.style.display = 'none';
+        greenDot.style.display = 'block';
+        bell.classList = 'show';
+      },
+    };
+    nameAction[action]();
+  }
+});
+
+notifications.addEventListener('click', (e) => {
+  if (e.target.className === 'close') {
+    const x = e.target;
+    const li = x.parentElement;
+    const ul = li.parentElement;
+
+    const viewAll = document.querySelector('.viewAll')
+
+    li.remove();
+
+    if (!ul.children) {
+    viewAll.style.display = 'none';
+    }
+  }
+});
+
 
 //  Create the HTML for the alert banner
 alertBanner.innerHTML = `
@@ -115,7 +186,6 @@ alertBanner.addEventListener('click', (e) => {
 
   if (element.classList.contains('alert-close')) {
     alertBanner.style.display = "none";
-    console.log('works');
   }
 });
 

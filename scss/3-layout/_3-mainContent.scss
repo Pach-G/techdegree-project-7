@@ -75,7 +75,8 @@
     display: contents;
 
     &:hover {
-      color: $color-prim-dark;
+      background-color: $color-close-x;
+      color: $color-font-light;
       cursor: pointer;
     }
   }

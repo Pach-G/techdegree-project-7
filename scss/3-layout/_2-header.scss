@@ -1,4 +1,6 @@
-
+//  ======
+//  Header
+//  ======
 .header {
   @include padding($top: 15px, $bottom: 15px);
   @extend %flex;
@@ -22,11 +24,81 @@
 
 .bell-notifications {
   @include margin($left: 10px, $right: 5px);
-  padding-right: 10px;
-  border-right: $border;
+  //padding-right: 10px;
 }
 
-.bell {
-  width: 40px;
+.vertical-div {
+  border-left: $border;
 }
 
+//  Bell & Notifications
+#bell {
+  width: 50px;
+  margin-top: 10px;
+}
+
+#green-dot {
+  width: 8px;
+  height: 8px;
+  position: relative;
+  top: 5px;
+  left: 35px;
+  margin-bottom: -9px;
+  border-radius: 50%;
+  background-color: $color-light-green;
+}
+
+.notifications {
+  display: none;
+  flex-direction: column;
+  width: 270px;
+  height: fit-content;
+  position: absolute;
+  border-radius: 5px;
+  background-color: $color-font-light;
+  color: $color-prim-dark;
+  box-shadow: $color-shadow;
+}
+
+.dropdown-message {
+  display: flex;
+  flex-direction: row;
+  border-top: 1px solid rgb(230, 230, 230);
+  padding: 10px;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+
+  &:hover {
+    background-color: rgb(245, 245, 245);
+  }
+
+  & p {
+    font-size: 12px;
+  }
+}
+
+.close {
+  display: flex;
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
+  padding: 5px;
+  border-radius: 20%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: $color-close-x;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+.viewAll {
+  padding-left: 10px;
+  background-color: $color-light-green;
+  color: $color-font-light;
+  border-radius: 0 0 5px 5px;
+}
