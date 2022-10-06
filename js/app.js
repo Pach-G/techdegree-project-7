@@ -7,7 +7,7 @@
 const bell = document.getElementById("bell");
 const greenDot = document.getElementById('green-dot');
 const notifications = document.getElementById('notifications');
-const notificationsUl = document.getElementsByClassName('notifications-messages');
+// const notificationsUl = document.getElementsByClassName('notifications-messages');
 
 //  Alert banner
 //  ------------
@@ -16,6 +16,12 @@ const alertBanner = document.getElementById('alert');
 //  Charts
 //  ------
 const trafficCanvas = document.getElementById('traffic-chart');
+const trafficNav = document.getElementById('traffic-nav');
+// const hourlyBtn = document.getElementById('hourly');
+// const dailyBtn = document.getElementById('daily');
+// const weeklyBtn = document.getElementById('weekly');
+// const monthlyBtn = document.getElementById('monthly');
+
 const dailyCanvas = document.getElementById('daily-chart');
 const mobileCanvas = document.getElementById('doughnut-chart');
 
@@ -164,13 +170,11 @@ notifications.addEventListener('click', (e) => {
     const li = x.parentElement;
     const ul = li.parentElement;
 
-    const viewAll = document.querySelector('.viewAll')
+    const viewAll = document.querySelector('.viewAll');
 
     li.remove();
-
-    if (!ul.children) {
     viewAll.style.display = 'none';
-    }
+
   }
 });
 
@@ -192,10 +196,148 @@ alertBanner.addEventListener('click', (e) => {
 // ======
 // Charts
 // ======
-// TODO: - add more options to personalize charts
 
 //  Traffic
 //  -------
+
+//  When button is clicked its class is changed to '.active'
+const activeBtn = function (btnClicked) {
+  btnClicked.className = 'active';
+  const ulChildren = trafficNav.children;
+
+  //every other button '.active' class is removed
+  for (let i = 0; i < ulChildren.length; i++) {
+    if (ulChildren[i] !== btnClicked) {
+      ulChildren[i].classList = '';
+    }
+  }
+};
+
+trafficNav.addEventListener('click', (e) => {
+  if (e.target.tagName === 'LI') {
+    const button = e.target;
+    const time = button.textContent.toLowerCase();
+
+    const timeData = {
+      hourly: function () {
+        trafficChart.data.datasets[0].data = [
+          100,
+          200,
+          90,
+          120,
+          340,
+          220,
+          180,
+          380,
+          450,
+          400,
+          100,
+        ];
+        trafficChart.data.labels = [
+          "10am",
+          "11am",
+          "12pm",
+          "1pm",
+          "2pm",
+          "3pm",
+          "4pm",
+          "5pm",
+          "6pm",
+          "7pm",
+          "8pm",
+        ];
+        trafficChart.update();
+        activeBtn(button);
+      },
+      daily: function () {
+        trafficChart.data.datasets[0].data = [
+          500,
+          300,
+          150,
+          450,
+          380,
+          120,
+          550,
+        ];
+        trafficChart.data.labels = [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",
+        ];
+        trafficChart.update();
+        activeBtn(button);
+      },
+      weekly: function () {
+        trafficChart.data.datasets[0].data = [
+          750,
+          1250,
+          1000,
+          2000,
+          1500,
+          1750,
+          1250,
+          1850,
+          2250,
+          1500,
+          2500,
+        ];
+        trafficChart.data.labels = [
+          "16-22",
+          "23-29",
+          "30-5",
+          "6-12",
+          "13-19",
+          "20-26",
+          "27-3",
+          "4-10",
+          "11-17",
+          "18-24",
+          "25-31",
+        ];
+        trafficChart.update();
+        activeBtn(button);
+      },
+      monthly: function () {
+        trafficChart.data.datasets[0].data = [
+          3000,
+          2000,
+          3500,
+          5000,
+          7000,
+          9000,
+          7500,
+          7000,
+          6000,
+          3000,
+          1500,
+          2500,
+        ];
+        trafficChart.data.labels = [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec",
+        ];
+        trafficChart.update();
+        activeBtn(button);
+      },
+    };
+    timeData[time]();
+  }
+});
+
 let trafficData = {
   labels: [
     "16-22", "23-29", "30-5", "6-12", "13-19", "20-26",
@@ -399,8 +541,6 @@ sendMessage.addEventListener('click', () => {
 //  ========
 //  Settings
 //  ========
-
-
 
 
 

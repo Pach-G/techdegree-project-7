@@ -21,7 +21,7 @@
     justify-content: space-around;
   }
 
-  &-nav-link {
+  &-nav li {
     padding: 10px;
 
     @include mQ('tablet') {
@@ -30,12 +30,16 @@
 
     &:hover {
       @extend %cursor;
-      border-style: none;
       border-radius: 25px;
-      background-color: $color-light-green;
-      color: $color-font-light;
+      outline: $color-light-green solid;
     }
   }
+}
+
+.active {
+  background-color: $color-light-green;
+  color: $color-font-light;
+  border-radius: 25px;
 }
 
 
