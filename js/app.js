@@ -7,7 +7,6 @@
 const bell = document.getElementById("bell");
 const greenDot = document.getElementById('green-dot');
 const notifications = document.getElementById('notifications');
-// const notificationsUl = document.getElementsByClassName('notifications-messages');
 
 //  Alert banner
 //  ------------
@@ -17,10 +16,6 @@ const alertBanner = document.getElementById('alert');
 //  ------
 const trafficCanvas = document.getElementById('traffic-chart');
 const trafficNav = document.getElementById('traffic-nav');
-// const hourlyBtn = document.getElementById('hourly');
-// const dailyBtn = document.getElementById('daily');
-// const weeklyBtn = document.getElementById('weekly');
-// const monthlyBtn = document.getElementById('monthly');
 
 const dailyCanvas = document.getElementById('daily-chart');
 const mobileCanvas = document.getElementById('doughnut-chart');
@@ -39,11 +34,9 @@ const userField = document.getElementById('user-field');
 const message = document.getElementById('message-field');
 const sendMessage = document.getElementById('send');
 
-
 // =========
 // Functions
 // =========
-
 //  Random date generator
 //  ---------------------
 const getRandomDate = () => {
@@ -71,7 +64,7 @@ const getRandomDate = () => {
   return date;
 };
 
-
+//  Random time generator
 const getRandomTime = () => {
   let time;
 
@@ -96,9 +89,7 @@ const getRandomTime = () => {
   return time;
 };
 
-
 //  Random object Property Selector
-//  -------------------------------
 const getRandomProperty = function (obj) {
   // Generates a random value taking the length of the given number
   const ranNum = Math.floor(Math.random() * 3);
@@ -109,14 +100,116 @@ const getRandomProperty = function (obj) {
   return activity + ' ' + platform.bold();
 };
 
+//  Traffic
+//  -------
+//  Toggles classList to '.active'
+const activeBtn = function (btnClicked) {
+  btnClicked.className = 'active';
+  const ulChildren = trafficNav.children;
+
+  //every other button '.active' class is removed
+  for (let i = 0; i < ulChildren.length; i++) {
+    if (ulChildren[i] !== btnClicked) {
+      ulChildren[i].classList = '';
+    }
+  }
+};
+
+// Creates a set of random labels
+const hourLabels = () => {
+  let time = [];
+
+  for (let i = 5; i < 24; i++) {
+    if (i < 10) {
+      time.push(`${i}am`);
+    }
+    else if (i >= 10 && i <= 11) {
+      time.push(`${i}am`);
+    }
+    else if (i === 12) {
+      time.push(`${i}pm`);
+    }
+    else if (i >= 12) {
+      time.push(`${i - 12}pm`);
+    }
+  }
+  return time;
+};
+
+// Creates a set of random hourly datasets
+const hourDatasets = () => {
+  let data = [];
+  const min = 0;
+  const max = 500;
+
+
+  for (let i = 0; i <= 24; i++) {
+    let number = Math.floor(Math.random() * (max - min) + min);
+    data.push(`${number}`);
+  }
+  return data;
+};
+
+// Creates a set of random daily datasets
+const dailyDatasets = () => {
+  let data = [];
+  const min = 0;
+  const max = 1000;
+
+  for (let i = 0; i <= 7; i++) {
+    let number = Math.floor(Math.random() * (max - min) + min);
+    data.push(`${number}`);
+  }
+  return data;
+};
+
+// Creates a set of random weekly datasets
+const weeklyDatasets = () => {
+  let data = [];
+  const min = 0;
+  const max = 4000;
+
+  for (let i = 0; i <= 14; i++) {
+    let number = Math.floor(Math.random() * (max - min) + min);
+    data.push(`${number}`);
+  }
+  return data;
+}
+
+// Creates a set of random weekly labels
+const weeklyLabels = () => {
+  let data = [];
+  let number = 0;
+
+  for (let i = 0; i < 14; i++) {
+    if (number >= 52) {
+      number = number + 2;
+      data.push(`${number}`);
+    }
+    else {
+      number += 4;
+      data.push(`${number}`);
+    }
+  }
+  return data;
+};
+
+// Creates a set of random monthly datasets
+const monthlyDatasets = () => {
+  let data = [];
+  const min = 0;
+  const max = 1000;
+
+  for (let i = 0; i <= 12; i++) {
+    let number = Math.floor(Math.random() * (max - min) + min);
+    data.push(`${number}`);
+  }
+  return data;
+};
 
 //  ======
 //  Alert
 //  ======
-//  TOdo:
-//   -Notification bell button display dropdown
-//   -Compare insertAdjacentHTML() option for alertBanner.innerHTLM
-
 //  Notification Dropdown
 //  ---------------------
 notifications.insertAdjacentHTML(
@@ -134,7 +227,7 @@ notifications.insertAdjacentHTML(
             </li>
   
             <li class="dropdown-message">
-              <p>You have 6 new messages</p>
+              <p>You have 3 new messages</p>
               <p class="close">X</p>
             </li>
           </ul>
@@ -196,69 +289,24 @@ alertBanner.addEventListener('click', (e) => {
 // ======
 // Charts
 // ======
-
-//  Traffic
-//  -------
-
-//  When button is clicked its class is changed to '.active'
-const activeBtn = function (btnClicked) {
-  btnClicked.className = 'active';
-  const ulChildren = trafficNav.children;
-
-  //every other button '.active' class is removed
-  for (let i = 0; i < ulChildren.length; i++) {
-    if (ulChildren[i] !== btnClicked) {
-      ulChildren[i].classList = '';
-    }
-  }
-};
-
 trafficNav.addEventListener('click', (e) => {
   if (e.target.tagName === 'LI') {
     const button = e.target;
     const time = button.textContent.toLowerCase();
 
+    const updateBtn = () => {
+      trafficChart.update();
+      activeBtn(button);
+    };
+
     const timeData = {
       hourly: function () {
-        trafficChart.data.datasets[0].data = [
-          100,
-          200,
-          90,
-          120,
-          340,
-          220,
-          180,
-          380,
-          450,
-          400,
-          100,
-        ];
-        trafficChart.data.labels = [
-          "10am",
-          "11am",
-          "12pm",
-          "1pm",
-          "2pm",
-          "3pm",
-          "4pm",
-          "5pm",
-          "6pm",
-          "7pm",
-          "8pm",
-        ];
-        trafficChart.update();
-        activeBtn(button);
+        trafficChart.data.datasets[0].data = hourDatasets();
+        trafficChart.data.labels = hourLabels();
+        updateBtn();
       },
       daily: function () {
-        trafficChart.data.datasets[0].data = [
-          500,
-          300,
-          150,
-          450,
-          380,
-          120,
-          550,
-        ];
+        trafficChart.data.datasets[0].data = dailyDatasets();
         trafficChart.data.labels = [
           "Monday",
           "Tuesday",
@@ -268,54 +316,15 @@ trafficNav.addEventListener('click', (e) => {
           "Saturday",
           "Sunday",
         ];
-        trafficChart.update();
-        activeBtn(button);
+        updateBtn();
       },
       weekly: function () {
-        trafficChart.data.datasets[0].data = [
-          750,
-          1250,
-          1000,
-          2000,
-          1500,
-          1750,
-          1250,
-          1850,
-          2250,
-          1500,
-          2500,
-        ];
-        trafficChart.data.labels = [
-          "16-22",
-          "23-29",
-          "30-5",
-          "6-12",
-          "13-19",
-          "20-26",
-          "27-3",
-          "4-10",
-          "11-17",
-          "18-24",
-          "25-31",
-        ];
-        trafficChart.update();
-        activeBtn(button);
+        trafficChart.data.datasets[0].data = weeklyDatasets();
+        trafficChart.data.labels = weeklyLabels();
+        updateBtn();
       },
       monthly: function () {
-        trafficChart.data.datasets[0].data = [
-          3000,
-          2000,
-          3500,
-          5000,
-          7000,
-          9000,
-          7500,
-          7000,
-          6000,
-          3000,
-          1500,
-          2500,
-        ];
+        trafficChart.data.datasets[0].data = monthlyDatasets();
         trafficChart.data.labels = [
           "Jan",
           "Feb",
@@ -330,8 +339,7 @@ trafficNav.addEventListener('click', (e) => {
           "Nov",
           "Dec",
         ];
-        trafficChart.update();
-        activeBtn(button);
+        updateBtn();
       },
     };
     timeData[time]();
@@ -350,18 +358,21 @@ let trafficData = {
       ],
       backgroundColor: 'rgba(116, 119, 191, .3)',
       borderWidth: 2,
+      pointStyle: 'circle',
+      pointRadius: 5,
+      pointHoverRadius: 15,
     },
   ],
 };
 
 let trafficOptions = {
-  layout: {
-    padding: 10,
-  },
+  layout: {padding: 10},
   backgroundColor: 'rgba(112, 104, 201, .5)',
   fill: true,
   aspectRatio: 2.5,
   animation: {duration: 0},
+  hoverRadius: 12,
+  hoverBackgroundColor: 'rgba(77, 76, 114, 45%)',
   scales: {
     y: {beginAtZero: true},
   },
@@ -370,7 +381,6 @@ let trafficOptions = {
   },
 };
 
-//  Create traffic chart
 let trafficChart = new Chart(trafficCanvas, {
   type: 'line',
   data: trafficData,
@@ -413,10 +423,8 @@ let dailyChart = new Chart(dailyCanvas, {
   options: dailyOptions,
 });
 
-
-// ===========================
 // Mobile Users Doughnut Chart
-// ===========================
+// ---------------------------
 const mobileData = {
   labels: ['Desktop', 'Tablet', 'Phones'],
   datasets: [
@@ -455,11 +463,9 @@ let mobileChart = new Chart(mobileCanvas, {
   options: mobileOptions,
 });
 
-
 //  ===========
 //  New Members
 //  ===========
-
 const createNewMembers = (array) => {
   let html = '';
 
@@ -520,7 +526,6 @@ recentActContainer.insertAdjacentHTML('beforeend', recentActivity(membersInfo, r
 //  ============
 //  Message User
 //  ============
-
 sendMessage.addEventListener('click', () => {
   // Ensure user and message fields are filled out
   if (userField.value === '' && message.value === '') {
@@ -537,10 +542,6 @@ sendMessage.addEventListener('click', () => {
   }
 });
 
-
 //  ========
 //  Settings
 //  ========
-
-
-
