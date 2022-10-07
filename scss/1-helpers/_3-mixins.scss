@@ -46,3 +46,8 @@
     }
   }
 }
+
+@mixin box-origin ($origin: 50% 50%) {
+  transform-box: fill-box;
+  transform-origin: $origin;
+}

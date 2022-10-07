@@ -1,0 +1,76 @@
+//  =========
+//  Keyframes
+//  =========
+@keyframes pulse {
+  25% {
+    transform: scale(1.3);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1.3);
+  }
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(180deg) scale(1.3);
+  }
+}
+
+@keyframes ring {
+  0%, 100% {transform: rotate(45deg);}
+  10%, 90% {transform: rotate(-20deg);}
+  40%, 90% {transform: rotate(45deg);}
+  50% {transform: rotate(-20deg);}
+}
+//  =====
+//  Icons
+//  =====
+#bell {
+  @include box-origin(50% 0);
+
+  &:hover {
+    animation: ring 2s ease-out forwards;
+  }
+}
+
+
+
+.icon-house {
+  @include box-origin;
+  transition: transform .5s ease-in-out;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.icon-graphs {
+  @include box-origin;
+  transition: transform .5s ease-in-out;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.icon-social {
+  @include box-origin;
+
+  &:hover {
+    animation: pulse .9s ease-out forwards;
+  }
+}
+
+.icon-settings {
+  @include box-origin;
+
+  &:hover {
+    animation: rotate .8s ease-in-out forwards;
+  }
+}
