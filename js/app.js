@@ -34,6 +34,11 @@ const userField = document.getElementById('user-field');
 const message = document.getElementById('message-field');
 const sendMessage = document.getElementById('send');
 
+//  Settings
+//  --------
+const saveBtn = document.getElementById('save');
+const cancelBtn = document.getElementById('cancel');
+
 // =========
 // Functions
 // =========
@@ -174,7 +179,7 @@ const weeklyDatasets = () => {
     data.push(`${number}`);
   }
   return data;
-}
+};
 
 // Creates a set of random weekly labels
 const weeklyLabels = () => {
@@ -212,9 +217,10 @@ const monthlyDatasets = () => {
 //  ======
 //  Notification Dropdown
 //  ---------------------
-notifications.insertAdjacentHTML(
-  'afterbegin',
-  `<h3 class="notifications-header">Notifications</h3>
+//  Todo: refactor notifications listener
+//   - create function that creates messages from an array
+notifications.insertAdjacentHTML('afterbegin',
+                                 `<h3 class="notifications-header">Notifications</h3>
           <ul class="notifications-messages">
             <li class="dropdown-message">
               <p>new friend request</p>
@@ -233,8 +239,7 @@ notifications.insertAdjacentHTML(
           </ul>
           <div class="viewAll">
             <p>View All Notifications</p>
-          </div>`,
-);
+          </div>`);
 
 bell.addEventListener("click", (e) => {
   if (e.target.id === 'bell') {
@@ -261,13 +266,10 @@ notifications.addEventListener('click', (e) => {
   if (e.target.className === 'close') {
     const x = e.target;
     const li = x.parentElement;
-    const ul = li.parentElement;
-
     const viewAll = document.querySelector('.viewAll');
 
     li.remove();
     viewAll.style.display = 'none';
-
   }
 });
 
@@ -494,10 +496,6 @@ membersContainer.insertAdjacentHTML('beforeend', createNewMembers(membersInfo));
 //  ===============
 //  Recent Activity
 //  ===============
-// Todo:
-//  -autocomplete user search field
-
-
 const recentActivity = (user, activity) => {
   let html = '';
 
@@ -522,10 +520,26 @@ const recentActivity = (user, activity) => {
 
 recentActContainer.insertAdjacentHTML('beforeend', recentActivity(membersInfo, recentActivityInfo));
 
-
 //  ============
 //  Message User
 //  ============
+
+// creates an array of names taken from the new members list
+const membersList = (arr) => {
+  const list = [];
+  for (let i = 0; i < arr.length; i++) {
+    const fullName = `${arr[i].name} ${arr[i].lastName}`
+    list.push(fullName);
+  }
+  return list;
+};
+membersList(membersInfo);
+
+// loops through the list and checks any match
+
+
+
+
 sendMessage.addEventListener('click', () => {
   // Ensure user and message fields are filled out
   if (userField.value === '' && message.value === '') {
@@ -541,6 +555,7 @@ sendMessage.addEventListener('click', () => {
     alert(`Message successfully sent to: ${userField.value}`);
   }
 });
+
 
 //  ========
 //  Settings
