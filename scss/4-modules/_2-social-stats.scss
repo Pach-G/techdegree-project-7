@@ -24,11 +24,6 @@
     background-color: $color-sec-light;
   }
 
-  &-img {
-    @include margin($left: 5px, $right: 0);
-    width: 75px;
-  }
-
   &-text {
     @include margin($left: 10px);
 
@@ -36,4 +31,27 @@
       color: $color-prim-light;
     }
   }
+}
+
+.social-text p:nth-child(1) {
+  font-weight: normal;
+  font-size: x-large;
+  color: $color-prim-light;
+  margin: 5px 0;
+}
+
+.social-text p:nth-child(2) {
+  font-weight: lighter;
+  font-size: 3em;
+  color: $color-sec-dark;
+  margin: 5px 0;
+}
+
+.social-icon {
+  @include box-origin;
+  fill: $color-font-light;
+}
+
+.social-img {
+  @include icon;
 }

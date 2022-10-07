@@ -51,3 +51,12 @@
   transform-box: fill-box;
   transform-origin: $origin;
 }
+
+@mixin icon {
+  @include margin($left: 5px, $right: 0);
+  width: 60px;
+  height: 60px;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: $color-prim-light;
+}
