@@ -7,6 +7,7 @@
 const bell = document.getElementById("bell");
 const greenDot = document.getElementById('green-dot');
 const notifications = document.getElementById('notifications');
+const notificationsUl = document.querySelector('.notifications-messages');
 
 //  Alert banner
 //  ------------
@@ -217,29 +218,24 @@ const monthlyDatasets = () => {
 //  ======
 //  Notification Dropdown
 //  ---------------------
-//  Todo: refactor notifications listener
-//   - create function that creates messages from an array
-notifications.insertAdjacentHTML('afterbegin',
-                                 `<h3 class="notifications-header">Notifications</h3>
-          <ul class="notifications-messages">
-            <li class="dropdown-message">
-              <p>new friend request</p>
-              <p class="close">X</p>
-            </li>
-              
-            <li class="dropdown-message">
-              <p>your comment on @page is trending</p>
-              <p class="close">X</p>
-            </li>
-  
-            <li class="dropdown-message">
-              <p>You have 3 new messages</p>
-              <p class="close">X</p>
-            </li>
-          </ul>
-          <div class="viewAll">
-            <p>View All Notifications</p>
-          </div>`);
+const notificationsMessages = (arr) => {
+
+  for (let i = 0; i < arr.length; i++) {
+    const li = document.createElement('li');
+    const p = document.createElement('p');
+    const px = document.createElement('p');
+
+    li.className = 'dropdown-message';
+    p.textContent = `${arr[i]}`;
+    px.className = 'close';
+    px.textContent = 'X';
+
+    notificationsUl.appendChild(li);
+    li.appendChild(p);
+    li.appendChild(px);
+  }
+};
+notificationsMessages(newMessages);
 
 bell.addEventListener("click", (e) => {
   if (e.target.id === 'bell') {
@@ -528,7 +524,7 @@ recentActContainer.insertAdjacentHTML('beforeend', recentActivity(membersInfo, r
 const membersList = (arr) => {
   const list = [];
   for (let i = 0; i < arr.length; i++) {
-    const fullName = `${arr[i].name} ${arr[i].lastName}`
+    const fullName = `${arr[i].name} ${arr[i].lastName}`;
     list.push(fullName);
   }
   return list;
@@ -536,8 +532,6 @@ const membersList = (arr) => {
 membersList(membersInfo);
 
 // loops through the list and checks any match
-
-
 
 
 sendMessage.addEventListener('click', () => {

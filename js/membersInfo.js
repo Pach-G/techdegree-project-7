@@ -34,3 +34,8 @@ const recentActivityInfo = {
   ],
 };
 
+const newMessages = [
+  'new friend request',
+  'your comment on @page is trending',
+  'You have 3 new messages'
+]
