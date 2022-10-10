@@ -1,7 +1,6 @@
 // =========
 // Variables
 // =========
-
 //  Dropdown Messages
 //  -----------------
 const bell = document.getElementById("bell");
@@ -29,8 +28,8 @@ const membersContainer = document.getElementById('members');
 //  ---------------
 const recentActContainer = document.getElementById('recent-activity');
 
-// Message User
-// ------------
+//  Message User
+//  ------------
 const userField = document.getElementById('user-field');
 const message = document.getElementById('message-field');
 const sendMessage = document.getElementById('send');
@@ -108,6 +107,7 @@ const getRandomProperty = function (obj) {
 
 //  Traffic
 //  -------
+
 //  Toggles classList to '.active'
 const activeBtn = function (btnClicked) {
   btnClicked.className = 'active';
@@ -116,7 +116,7 @@ const activeBtn = function (btnClicked) {
   //every other button '.active' class is removed
   for (let i = 0; i < ulChildren.length; i++) {
     if (ulChildren[i] !== btnClicked) {
-      ulChildren[i].classList = '';
+      ulChildren[i].classList.remove('active');
     }
   }
 };
@@ -223,21 +223,21 @@ const notificationsMessages = (arr) => {
   for (let i = 0; i < arr.length; i++) {
     const li = document.createElement('li');
     const p = document.createElement('p');
-    const px = document.createElement('p');
+    const close = document.createElement('p');
 
     li.className = 'dropdown-message';
     p.textContent = `${arr[i]}`;
-    px.className = 'close';
-    px.textContent = 'X';
+    close.className = 'close';
+    close.textContent = 'X';
 
     notificationsUl.appendChild(li);
     li.appendChild(p);
-    li.appendChild(px);
+    li.appendChild(close);
   }
 };
 notificationsMessages(newMessages);
 
-bell.addEventListener("click", (e) => {
+bell.addEventListener("keyup", (e) => {
   if (e.target.id === 'bell') {
     const bell = e.target;
     const action = bell.classList;
@@ -268,7 +268,6 @@ notifications.addEventListener('click', (e) => {
     viewAll.style.display = 'none';
   }
 });
-
 
 //  Create the HTML for the alert banner
 alertBanner.innerHTML = `
@@ -519,6 +518,45 @@ recentActContainer.insertAdjacentHTML('beforeend', recentActivity(membersInfo, r
 //  ============
 //  Message User
 //  ============
+//  Todo: 
+//    -create a function that loops through an array and finds and displays any matches
+// const autocomplete = document.getElementById('user-search');
+// const resultsHtml = document.getElementById('results');
+//
+// autocomplete.oninput = function () {
+//   let results = [];
+//   const userInput = this.value;
+//
+//   resultsHtml.innerHTML = '';
+//
+//   if (userInput.length > 0) {
+//     results = getResults(userInput);
+//     resultsHtml.style.display = 'block';
+//
+//     for (let i = 0; i < results.length; i++) {
+//       resultsHtml.innerHTML += `<li>${results[i]}</li>`;
+//       console.log(results)
+//       console.log(resultsHtml)
+//     }
+//   }
+// };
+//
+// const getResults = (input) => {
+//   const results = [];
+//
+//   for (let i = 0; i < data.length; i++) {
+//     if (input === data[i].slice(0, input.length)) {
+//       results.push(data[i]);
+//     }
+//   }
+//   console.log(results)
+//   return results;
+// };
+//
+// resultsHtml.onclick = function (e) {
+//   autocomplete.value = e.target.innerText;
+//   this.innerHTML = '';
+// };
 
 // creates an array of names taken from the new members list
 const membersList = (arr) => {
@@ -529,9 +567,39 @@ const membersList = (arr) => {
   }
   return list;
 };
-membersList(membersInfo);
 
-// loops through the list and checks any match
+const authorSearch = document.getElementById('user-search');
+const resultsHtml = document.getElementById('results');
+
+function removeNames() {
+  let names = resultsHtml.childNodes
+  names.remove();
+}
+
+authorSearch.addEventListener('keyup', (e) => {
+  let currentValue = e.target.value.toLowerCase();
+  let authors = membersList(membersInfo);
+
+  removeNames();
+
+  for (let i = 0; i < authors.length; i++) {
+
+    if (authors[i].toLowerCase().includes(currentValue)) {
+      const li = document.createElement('li')
+      let p = document.createElement('p')
+
+
+      p.innerHTML = authors[i]
+      li.appendChild(p)
+      resultsHtml.appendChild(li)
+      resultsHtml.appendChild(li);
+      console.log(authors[i]);
+    }
+    // if (resultsHtml) {
+    //
+    // }
+  }
+});
 
 
 sendMessage.addEventListener('click', () => {
@@ -550,7 +618,10 @@ sendMessage.addEventListener('click', () => {
   }
 });
 
-
 //  ========
 //  Settings
 //  ========
+
+//  Todo: 
+//   -create a function to save local storage 
+//   -create a function to delete all local storage

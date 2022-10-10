@@ -14,7 +14,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="svg/favicon_io/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="svg/favicon_io/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="svg/favicon_io/favicon-16x16.png">
-  <link rel="manifest" href="svg/favicon_io/site.webmanifest">
+<!--  <link rel="manifest" href="svg/favicon_io/site.webmanifest">-->
 
   <!--    font links  -->
   <!--    ==========  -->
@@ -212,13 +212,13 @@
             action="index.html"
             method="post">
         <fieldset class="message-container">
-          <label for="user-field"></label>
-          <input
-              id="user-field"
-              class="form-field"
-              name="search"
-              type="text"
-              placeholder="Search for user"/>
+          <label for="user-search"></label>
+          <input id="user-search"
+                 class="form-field"
+                 name="search"
+                 type="text"
+                 placeholder="Search for user"/>
+          <ul id="results"></ul>
 
           <label for="message-field"></label>
           <textarea
