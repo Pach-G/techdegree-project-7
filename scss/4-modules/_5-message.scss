@@ -27,15 +27,3 @@
   @extend .form-field;
   min-height: 150px;
 }
-
-.results {
-  display: none;
-  flex-direction: column;
-  width: 270px;
-  height: fit-content;
-  position: absolute;
-  border-radius: 5px;
-  background-color: $color-font-light;
-  color: $color-prim-dark;
-  box-shadow: $color-shadow;
-}

@@ -16,7 +16,6 @@ const alertBanner = document.getElementById('alert');
 //  ------
 const trafficCanvas = document.getElementById('traffic-chart');
 const trafficNav = document.getElementById('traffic-nav');
-
 const dailyCanvas = document.getElementById('daily-chart');
 const mobileCanvas = document.getElementById('doughnut-chart');
 
@@ -30,9 +29,12 @@ const recentActContainer = document.getElementById('recent-activity');
 
 //  Message User
 //  ------------
-const userField = document.getElementById('user-field');
+const userField = document.getElementById('user-search');
 const message = document.getElementById('message-field');
 const sendMessage = document.getElementById('send');
+const authorSearch = document.getElementById('user-search');
+const resultsHTML = document.getElementById('results');
+const datalist = document.getElementById('members-datalist');
 
 //  Settings
 //  --------
@@ -43,7 +45,6 @@ const cancelBtn = document.getElementById('cancel');
 // Functions
 // =========
 //  Random date generator
-//  ---------------------
 const getRandomDate = () => {
   let date;
 
@@ -73,7 +74,6 @@ const getRandomDate = () => {
 const getRandomTime = () => {
   let time;
 
-
 // Math.ceil prevents the value from being 0;
   let hour = Math.ceil(Math.random() * 72);
 
@@ -86,11 +86,9 @@ const getRandomTime = () => {
     else {
       time = hour + ' days ago';
     }
-
     return time;
   }
   time = hour + ' hours ago';
-
   return time;
 };
 
@@ -107,7 +105,6 @@ const getRandomProperty = function (obj) {
 
 //  Traffic
 //  -------
-
 //  Toggles classList to '.active'
 const activeBtn = function (btnClicked) {
   btnClicked.className = 'active';
@@ -216,8 +213,7 @@ const monthlyDatasets = () => {
 //  ======
 //  Alert
 //  ======
-//  Notification Dropdown
-//  ---------------------
+//  Creates the notification dropdown banner
 const notificationsMessages = (arr) => {
 
   for (let i = 0; i < arr.length; i++) {
@@ -237,7 +233,7 @@ const notificationsMessages = (arr) => {
 };
 notificationsMessages(newMessages);
 
-bell.addEventListener("keyup", (e) => {
+bell.addEventListener("click", (e) => {
   if (e.target.id === 'bell') {
     const bell = e.target;
     const action = bell.classList;
@@ -274,7 +270,7 @@ alertBanner.innerHTML = `
     <p class="alert-message"><strong>Alert: </strong>You have <strong>6</strong> overdue tasks to complete </p>
     <button class='alert-close'>X</button>`;
 
-//  Remove alert banner
+//  Removes alert banner
 alertBanner.addEventListener('click', (e) => {
   const element = e.target;
 
@@ -518,89 +514,27 @@ recentActContainer.insertAdjacentHTML('beforeend', recentActivity(membersInfo, r
 //  ============
 //  Message User
 //  ============
-//  Todo: 
-//    -create a function that loops through an array and finds and displays any matches
-// const autocomplete = document.getElementById('user-search');
-// const resultsHtml = document.getElementById('results');
-//
-// autocomplete.oninput = function () {
-//   let results = [];
-//   const userInput = this.value;
-//
-//   resultsHtml.innerHTML = '';
-//
-//   if (userInput.length > 0) {
-//     results = getResults(userInput);
-//     resultsHtml.style.display = 'block';
-//
-//     for (let i = 0; i < results.length; i++) {
-//       resultsHtml.innerHTML += `<li>${results[i]}</li>`;
-//       console.log(results)
-//       console.log(resultsHtml)
-//     }
-//   }
-// };
-//
-// const getResults = (input) => {
-//   const results = [];
-//
-//   for (let i = 0; i < data.length; i++) {
-//     if (input === data[i].slice(0, input.length)) {
-//       results.push(data[i]);
-//     }
-//   }
-//   console.log(results)
-//   return results;
-// };
-//
-// resultsHtml.onclick = function (e) {
-//   autocomplete.value = e.target.innerText;
-//   this.innerHTML = '';
-// };
-
 // creates an array of names taken from the new members list
-const membersList = (arr) => {
+const membersList = (array) => {
   const list = [];
-  for (let i = 0; i < arr.length; i++) {
-    const fullName = `${arr[i].name} ${arr[i].lastName}`;
+  for (let i = 0; i < array.length; i++) {
+    const fullName = `${array[i].name} ${array[i].lastName}`;
     list.push(fullName);
   }
   return list;
 };
 
-const authorSearch = document.getElementById('user-search');
-const resultsHtml = document.getElementById('results');
+// creates and adds options to the datalist. Takes and array as an argument
+const createOptions = (array) => {
+  for (let i = 0; i < array.length; i++) {
+    const option = document.createElement('option');
 
-function removeNames() {
-  let names = resultsHtml.childNodes
-  names.remove();
-}
-
-authorSearch.addEventListener('keyup', (e) => {
-  let currentValue = e.target.value.toLowerCase();
-  let authors = membersList(membersInfo);
-
-  removeNames();
-
-  for (let i = 0; i < authors.length; i++) {
-
-    if (authors[i].toLowerCase().includes(currentValue)) {
-      const li = document.createElement('li')
-      let p = document.createElement('p')
-
-
-      p.innerHTML = authors[i]
-      li.appendChild(p)
-      resultsHtml.appendChild(li)
-      resultsHtml.appendChild(li);
-      console.log(authors[i]);
-    }
-    // if (resultsHtml) {
-    //
-    // }
+    option.innerHTML = array[i];
+    datalist.appendChild(option);
   }
-});
+};
 
+createOptions(membersList(membersInfo))
 
 sendMessage.addEventListener('click', () => {
   // Ensure user and message fields are filled out
@@ -612,6 +546,9 @@ sendMessage.addEventListener('click', () => {
   }
   else if (message.value === '') {
     alert("Please fill out message field before sending");
+  }
+  else if (!usersList.includes(userField.value)) {
+    alert('Sorry, we could not find that user');
   }
   else {
     alert(`Message successfully sent to: ${userField.value}`);
@@ -625,3 +562,4 @@ sendMessage.addEventListener('click', () => {
 //  Todo: 
 //   -create a function to save local storage 
 //   -create a function to delete all local storage
+//   - comment all doc
