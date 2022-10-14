@@ -578,7 +578,7 @@ form.addEventListener('submit', (e) => {
 saveBtn.addEventListener('click', () => {
   const emailOnOff = emailSwitch.checked;
   const profileOnOff = profileSwitch.checked;
-  const timezoneValue = timezoneForm.value;
+  const timezoneValue = timezoneForm.selectedIndex;
 
   localStorage.setItem('email', emailOnOff);
   localStorage.setItem('profile', profileOnOff);
@@ -594,7 +594,7 @@ const getLocalStorage = () => {
     profileSwitch.checked = false;
   }
   if (localStorage.getItem('timezones')) {
-    timezoneForm.value = localStorage.getItem('timezones');
+    timezoneForm.selectedIndex = localStorage.getItem('timezones');
   }
 };
 getLocalStorage();
@@ -602,6 +602,9 @@ getLocalStorage();
 // Clears local storage
 const clearLocalStorage = () => {
   localStorage.clear();
+  emailSwitch.checked = true
+  profileSwitch.checked = true
+  timezoneForm.value = "Select a Timezone";
 };
 
 // Clears local storage when the cancel button is clicked
