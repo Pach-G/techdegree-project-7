@@ -1,6 +1,7 @@
 // =========
 // Variables
 // =========
+
 //  Dropdown Messages
 //  -----------------
 const bell = document.getElementById("bell");
@@ -43,70 +44,80 @@ const timezoneForm = document.getElementById('timezone');
 const saveBtn = document.getElementById('save');
 const cancelBtn = document.getElementById('cancel');
 
-// =========
-// Functions
-// =========
-//  Random date generator
-const getRandomDate = () => {
-  let date;
+//  ======
+//  Alert
+//  ======
+//  Creates the notification dropdown banner
+const notificationsMessages = (arr) => {
 
-//set a range of years
-  const min = 2020;
-  const max = 2022;
+  for (let i = 0; i < arr.length; i++) {
+    const li = document.createElement('li');
+    const p = document.createElement('p');
+    const close = document.createElement('p');
 
-// Math.ceil prevents the value from being 0;
-  let month = Math.ceil(Math.random() * 12);
-  let day = Math.ceil(Math.random() * 28);
-  let year = Math.floor(Math.random() * (max - min) + min);
+    li.className = 'dropdown-message';
+    p.textContent = `${arr[i]}`;
+    close.className = 'close';
+    close.textContent = 'X';
 
-//this ensures that the format will stay mm/dd/yyyy;
-  if (month < 10) {
-    month = "0" + month;
+    notificationsUl.appendChild(li);
+    li.appendChild(p);
+    li.appendChild(close);
   }
-  if (day < 10) {
-    day = "0" + day;
+};
+notificationsMessages(newMessages);
+
+// Shows or hides notifications when bell is clicked
+bell.addEventListener("click", (e) => {
+  if (e.target.id === 'bell') {
+    const bell = e.target;
+    const action = bell.classList;
+
+    const nameAction = {
+      show: function () {
+        notifications.style.display = 'flex';
+        greenDot.style.display = 'none';
+        bell.classList = 'hide';
+      },
+      hide: function () {
+        notifications.style.display = 'none';
+        greenDot.style.display = 'block';
+        bell.classList = 'show';
+      },
+    };
+    nameAction[action]();
   }
-//concatenates random date in mm/dd/yyyy format;
-  date = month + "/" + day + "/" + year;
+});
 
-  return date;
-};
+// Removes li elements form notifications when 'X' is clicked
+notifications.addEventListener('click', (e) => {
+  if (e.target.className === 'close') {
+    const x = e.target;
+    const li = x.parentElement;
+    const viewAll = document.querySelector('.viewAll');
 
-//  Random time generator
-const getRandomTime = () => {
-  let time;
-
-// Math.ceil prevents the value from being 0;
-  let hour = Math.ceil(Math.random() * 72);
-
-  if (hour > 24) {
-    hour = Math.floor(hour / 24);
-
-    if (hour === 1) {
-      time = hour + ' day ago';
-    }
-    else {
-      time = hour + ' days ago';
-    }
-    return time;
+    li.remove();
+    viewAll.style.display = 'none';
   }
-  time = hour + ' hours ago';
-  return time;
-};
+});
 
-//  Random object Property Selector
-const getRandomProperty = function (obj) {
-  // Generates a random value taking the length of the given number
-  const ranNum = Math.floor(Math.random() * 3);
-  // Stores property value in a constant taking random number as the array index value
-  const activity = obj.activity[ranNum];
-  const platform = obj.platform[ranNum];
+//  Create the HTML for the alert banner
+alertBanner.innerHTML = `
+    <p class="alert-message"><strong>Alert: </strong>You have <strong>6</strong> overdue tasks to complete </p>
+    <button class='alert-close'>X</button>`;
 
-  return activity + ' ' + platform.bold();
-};
+//  Removes alert banner
+alertBanner.addEventListener('click', (e) => {
+  const element = e.target;
 
-//  Traffic
-//  -------
+  if (element.classList.contains('alert-close')) {
+    alertBanner.style.display = "none";
+  }
+});
+
+// ======
+// Charts
+// ======
 //  Toggles classList to '.active'
 const activeBtn = function (btnClicked) {
   btnClicked.className = 'active';
@@ -120,7 +131,7 @@ const activeBtn = function (btnClicked) {
   }
 };
 
-// Creates a set of random labels
+// Creates a set of random hours labels
 const hourLabels = () => {
   let time = [];
 
@@ -212,78 +223,9 @@ const monthlyDatasets = () => {
   return data;
 };
 
-//  ======
-//  Alert
-//  ======
-//  Creates the notification dropdown banner
-const notificationsMessages = (arr) => {
-
-  for (let i = 0; i < arr.length; i++) {
-    const li = document.createElement('li');
-    const p = document.createElement('p');
-    const close = document.createElement('p');
-
-    li.className = 'dropdown-message';
-    p.textContent = `${arr[i]}`;
-    close.className = 'close';
-    close.textContent = 'X';
-
-    notificationsUl.appendChild(li);
-    li.appendChild(p);
-    li.appendChild(close);
-  }
-};
-notificationsMessages(newMessages);
-
-bell.addEventListener("click", (e) => {
-  if (e.target.id === 'bell') {
-    const bell = e.target;
-    const action = bell.classList;
-
-    const nameAction = {
-      show: function () {
-        notifications.style.display = 'flex';
-        greenDot.style.display = 'none';
-        bell.classList = 'hide';
-      },
-      hide: function () {
-        notifications.style.display = 'none';
-        greenDot.style.display = 'block';
-        bell.classList = 'show';
-      },
-    };
-    nameAction[action]();
-  }
-});
-
-notifications.addEventListener('click', (e) => {
-  if (e.target.className === 'close') {
-    const x = e.target;
-    const li = x.parentElement;
-    const viewAll = document.querySelector('.viewAll');
-
-    li.remove();
-    viewAll.style.display = 'none';
-  }
-});
-
-//  Create the HTML for the alert banner
-alertBanner.innerHTML = `
-    <p class="alert-message"><strong>Alert: </strong>You have <strong>6</strong> overdue tasks to complete </p>
-    <button class='alert-close'>X</button>`;
-
-//  Removes alert banner
-alertBanner.addEventListener('click', (e) => {
-  const element = e.target;
-
-  if (element.classList.contains('alert-close')) {
-    alertBanner.style.display = "none";
-  }
-});
-
-// ======
-// Charts
-// ======
+// Traffic Chart
+// -------------
+// Creates random datasets and labels for all traffic times
 trafficNav.addEventListener('click', (e) => {
   if (e.target.tagName === 'LI') {
     const button = e.target;
@@ -341,6 +283,7 @@ trafficNav.addEventListener('click', (e) => {
   }
 });
 
+// Creates Traffic chart datasets and labels
 let trafficData = {
   labels: [
     "16-22", "23-29", "30-5", "6-12", "13-19", "20-26",
@@ -360,6 +303,7 @@ let trafficData = {
   ],
 };
 
+// Creates Traffic chart options
 let trafficOptions = {
   layout: {padding: 10},
   backgroundColor: 'rgba(112, 104, 201, .5)',
@@ -376,6 +320,7 @@ let trafficOptions = {
   },
 };
 
+// Creates Traffic chart
 let trafficChart = new Chart(trafficCanvas, {
   type: 'line',
   data: trafficData,
@@ -384,6 +329,8 @@ let trafficChart = new Chart(trafficCanvas, {
 
 //  Daily traffic bar chart
 //  -----------------------
+
+// Creates daily traffic bar chart datasets and labels
 const dailyData = {
   labels: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
   datasets: [
@@ -396,6 +343,7 @@ const dailyData = {
   ],
 };
 
+// Creates daily traffic bar chart options
 const dailyOptions = {
   layout: {
     padding: 10,
@@ -412,6 +360,7 @@ const dailyOptions = {
   },
 };
 
+// Creates daily traffic bar chart
 let dailyChart = new Chart(dailyCanvas, {
   type: 'bar',
   data: dailyData,
@@ -420,6 +369,8 @@ let dailyChart = new Chart(dailyCanvas, {
 
 // Mobile Users Doughnut Chart
 // ---------------------------
+
+// Creates mobile chart datasets and labels
 const mobileData = {
   labels: ['Desktop', 'Tablet', 'Phones'],
   datasets: [
@@ -436,6 +387,7 @@ const mobileData = {
   ],
 };
 
+// Creates mobile chart options
 const mobileOptions = {
   layout: {
     padding: 10,
@@ -452,6 +404,7 @@ const mobileOptions = {
   },
 };
 
+// Creates mobil chart
 let mobileChart = new Chart(mobileCanvas, {
   type: 'doughnut',
   data: mobileData,
@@ -461,6 +414,33 @@ let mobileChart = new Chart(mobileCanvas, {
 //  ===========
 //  New Members
 //  ===========
+//  Random date generator
+const getRandomDate = () => {
+  let date;
+
+//set a range of years
+  const min = 2020;
+  const max = 2022;
+
+// Math.ceil prevents the value from being 0;
+  let month = Math.ceil(Math.random() * 12);
+  let day = Math.ceil(Math.random() * 28);
+  let year = Math.floor(Math.random() * (max - min) + min);
+
+//this ensures that the format will stay mm/dd/yyyy;
+  if (month < 10) {
+    month = "0" + month;
+  }
+  if (day < 10) {
+    day = "0" + day;
+  }
+//concatenates random date in mm/dd/yyyy format;
+  date = month + "/" + day + "/" + year;
+
+  return date;
+};
+
+// dynamically creates new members avatars
 const createNewMembers = (array) => {
   let html = '';
 
@@ -483,13 +463,46 @@ const createNewMembers = (array) => {
   }
   return html;
 };
-
 membersContainer.insertAdjacentHTML('beforeend', createNewMembers(membersInfo));
 
 //  ===============
 //  Recent Activity
 //  ===============
-const recentActivity = (user, activity) => {
+//  Random object Property Selector
+const getRandomProperty = function (obj) {
+  // Generates a random value taking the length of the given number
+  const ranNum = Math.floor(Math.random() * 3);
+  // Stores property value in a constant taking random number as the array index value
+  const activity = obj.activity[ranNum];
+  const platform = obj.platform[ranNum];
+
+  return activity + ' ' + platform.bold();
+};
+
+//  Random time generator
+const getRandomTime = () => {
+  let time;
+
+// Math.ceil prevents the value from being 0;
+  let hour = Math.ceil(Math.random() * 72);
+
+  if (hour > 24) {
+    hour = Math.floor(hour / 24);
+
+    if (hour === 1) {
+      time = hour + ' day ago';
+    }
+    else {
+      time = hour + ' days ago';
+    }
+    return time;
+  }
+  time = hour + ' hours ago';
+  return time;
+};
+
+//   Randomly generates Recent Activity
+const recentActivity = (user) => {
   let html = '';
 
   for (let i = 0; i < user.length; i++) {
@@ -510,7 +523,6 @@ const recentActivity = (user, activity) => {
   }
   return html;
 };
-
 recentActContainer.insertAdjacentHTML('beforeend', recentActivity(membersInfo, recentActivityInfo));
 
 //  ============
@@ -538,6 +550,7 @@ const createOptions = (array) => {
 const usersList = membersList(membersInfo);
 createOptions(usersList);
 
+// sends an alert to user depending how user and message fields are filled
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   // Ensure user and message fields aer filled out
@@ -561,20 +574,18 @@ form.addEventListener('submit', (e) => {
 //  ========
 //  Settings
 //  ========
-
 // Sets Local Storage
 saveBtn.addEventListener('click', () => {
-  const emailOnOff = emailSwitch.checked
+  const emailOnOff = emailSwitch.checked;
   const profileOnOff = profileSwitch.checked;
   const timezoneValue = timezoneForm.value;
-  
+
   localStorage.setItem('email', emailOnOff);
   localStorage.setItem('profile', profileOnOff);
   localStorage.setItem('timezones', timezoneValue);
-
 });
 
-//   Gets local storage. When page is reloaded the settings are remembered
+// Gets local storage. When page is reloaded the settings are remembered
 const getLocalStorage = () => {
   if (localStorage.getItem('email') === "false") {
     emailSwitch.checked = false;
