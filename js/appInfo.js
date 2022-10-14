@@ -1,3 +1,12 @@
+//  =============
+//  Notifications
+//  =============
+const newMessages = [
+  'new friend request',
+  'your comment on @page is trending',
+  'You have 3 new messages',
+];
+
 //  ================
 //  New Members info
 //  ================
@@ -21,6 +30,9 @@ const membersInfo = [
   },
 ];
 
+//  ================
+//  Resent Activity
+//  ================
 const recentActivityInfo = {
   platform: [
     "Facebook's Changes for 2023",
@@ -33,9 +45,3 @@ const recentActivityInfo = {
     "liked the post",
   ],
 };
-
-const newMessages = [
-  'new friend request',
-  'your comment on @page is trending',
-  'You have 3 new messages'
-]
