@@ -285,15 +285,10 @@ trafficNav.addEventListener('click', (e) => {
 
 // Creates Traffic chart datasets and labels
 let trafficData = {
-  labels: [
-    "16-22", "23-29", "30-5", "6-12", "13-19", "20-26",
-    "27-3", "4-10", "11-17", "18-24", "25-31",
-  ],
+  labels: weeklyLabels(),
   datasets: [
     {
-      data: [
-        750, 1250, 1000, 2000, 1500, 1750, 1250, 1850, 2250, 1500, 2500,
-      ],
+      data: weeklyDatasets(),
       backgroundColor: 'rgba(116, 119, 191, .3)',
       borderWidth: 2,
       pointStyle: 'circle',
@@ -612,4 +607,3 @@ cancelBtn.addEventListener('click', (e) => {
   if (e.target.id === 'cancel')
     clearLocalStorage();
 });
-
