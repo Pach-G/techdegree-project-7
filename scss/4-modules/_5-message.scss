@@ -6,9 +6,10 @@
   @extend %grid-col-tablet-1-2;
   @extend %grid-col-desktop-1-1;
 
-  @include mQ("desktop"){
+  @include mQ("desktop") {
     border-bottom: none;
   }
+
   &-container {
     @extend %flex;
     align-items: stretch;

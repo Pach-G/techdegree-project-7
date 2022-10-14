@@ -14,7 +14,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="svg/favicon_io/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="svg/favicon_io/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="svg/favicon_io/favicon-16x16.png">
-<!--  <link rel="manifest" href="svg/favicon_io/site.webmanifest">-->
+  <!--  <link rel="manifest" href="svg/favicon_io/site.webmanifest">-->
 
   <!--    font links  -->
   <!--    ==========  -->
@@ -222,16 +222,16 @@
                  placeholder="Search for user"
                  list="members-datalist"/>
           <datalist id="members-datalist">
-          <!--   members datalist added dynamically -->
+            <!--   members datalist added dynamically -->
           </datalist>
           <label for="message-field"></label>
           <textarea
               id="message-field"
               class="form-area"
               placeholder="Message for user"></textarea>
+          <button id="send" class="btn-send" type="submit">SEND</button>
         </fieldset>
 
-        <button id="send" class="btn-send" type="button">SEND</button>
 
       </form>
     </section>
@@ -242,40 +242,26 @@
       <h3>Settings</h3>
 
       <div class="switch-container">
-        <p>Send Email Notifications</p>
-        <div class="switch">
-          <input type="checkbox"
-                 name="switch"
-                 class="switch-checkbox"
-                 id="switch-email"
-                 tabindex="0"
-                 checked>
-          <label class="switch-label" for="switch-email">
-            <span class="switch-inner"></span>
-            <span class="switch-switch"></span>
-          </label>
-        </div>
+        <label for="switch-email" class="switch-label">Send Email Notifications</label>
+        <input id="switch-email"
+               class="switch"
+               name="switch-email"
+               type="checkbox"
+               checked>
       </div>
 
       <div class="switch-container">
-        <p>Set Profile to Public</p>
-        <div class="switch">
-          <input type="checkbox"
-                 name="switch"
-                 class="switch-checkbox"
-                 id="switch-profile"
-                 tabindex="0"
-                 checked>
-          <label class="switch-label" for="switch-profile">
-            <span class="switch-inner"></span>
-            <span class="switch-switch"></span>
-          </label>
-        </div>
+        <label for="switch-profile" class="switch-label">Set Profile Public</label>
+        <input id="switch-profile"
+               class="switch"
+               name="switch-profile"
+               type="checkbox"
+               checked>
       </div>
 
 
       <label for="timezone"></label>
-      <select id="timezone" class="form-field">
+      <select id="timezone" class="form-field" >
         <option disabled selected>Select a Timezone</option>
 
         <option data-time-zone-id="1" data-gmt-adjustment="GMT-12:00" data-use-daylight="0"

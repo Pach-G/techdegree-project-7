@@ -29,15 +29,17 @@ const recentActContainer = document.getElementById('recent-activity');
 
 //  Message User
 //  ------------
-const userField = document.getElementById('user-search');
-const message = document.getElementById('message-field');
-const sendMessage = document.getElementById('send');
-const authorSearch = document.getElementById('user-search');
-const resultsHTML = document.getElementById('results');
+const form = document.getElementById('widget-container');
+const userSearch = document.getElementById('user-search');
+const sendBtn = document.getElementById('send');
 const datalist = document.getElementById('members-datalist');
+let messageField = document.getElementById('message-field');
 
 //  Settings
 //  --------
+const emailSwitch = document.getElementById('switch-email');
+const profileSwitch = document.getElementById('switch-profile');
+const timezoneForm = document.getElementById('timezone');
 const saveBtn = document.getElementById('save');
 const cancelBtn = document.getElementById('cancel');
 
@@ -524,7 +526,7 @@ const membersList = (array) => {
   return list;
 };
 
-// creates and adds options to the datalist. Takes and array as an argument
+// creates and adds options to the datalist
 const createOptions = (array) => {
   for (let i = 0; i < array.length; i++) {
     const option = document.createElement('option');
@@ -533,25 +535,26 @@ const createOptions = (array) => {
     datalist.appendChild(option);
   }
 };
+const usersList = membersList(membersInfo);
+createOptions(usersList);
 
-createOptions(membersList(membersInfo))
-
-sendMessage.addEventListener('click', () => {
-  // Ensure user and message fields are filled out
-  if (userField.value === '' && message.value === '') {
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  // Ensure user and message fields aer filled out
+  if (userSearch.value === '' && messageField.value === '') {
     alert('Please fill out user and message fields before sending');
   }
-  else if (userField.value === '') {
+  else if (userSearch.value === '') {
     alert("Please fill out user field before sending");
   }
-  else if (message.value === '') {
+  else if (messageField.value === '') {
     alert("Please fill out message field before sending");
   }
-  else if (!usersList.includes(userField.value)) {
+  else if (!usersList.includes(userSearch.value)) {
     alert('Sorry, we could not find that user');
   }
   else {
-    alert(`Message successfully sent to: ${userField.value}`);
+    alert(`Message successfully sent to: ${userSearch.value}`);
   }
 });
 
@@ -559,7 +562,40 @@ sendMessage.addEventListener('click', () => {
 //  Settings
 //  ========
 
-//  Todo: 
-//   -create a function to save local storage 
-//   -create a function to delete all local storage
-//   - comment all doc
+// Sets Local Storage
+saveBtn.addEventListener('click', () => {
+  const emailOnOff = emailSwitch.checked
+  const profileOnOff = profileSwitch.checked;
+  const timezoneValue = timezoneForm.value;
+  
+  localStorage.setItem('email', emailOnOff);
+  localStorage.setItem('profile', profileOnOff);
+  localStorage.setItem('timezones', timezoneValue);
+
+});
+
+//   Gets local storage. When page is reloaded the settings are remembered
+const getLocalStorage = () => {
+  if (localStorage.getItem('email') === "false") {
+    emailSwitch.checked = false;
+  }
+  if (localStorage.getItem('profile') === 'false') {
+    profileSwitch.checked = false;
+  }
+  if (localStorage.getItem('timezones')) {
+    timezoneForm.value = localStorage.getItem('timezones');
+  }
+};
+getLocalStorage();
+
+// Clears local storage
+const clearLocalStorage = () => {
+  localStorage.clear();
+};
+
+// Clears local storage when the cancel button is clicked
+cancelBtn.addEventListener('click', (e) => {
+  if (e.target.id === 'cancel')
+    clearLocalStorage();
+});
+
