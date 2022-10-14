@@ -476,7 +476,7 @@ const getRandomProperty = function (obj) {
   const activity = obj.activity[ranNum];
   const platform = obj.platform[ranNum];
 
-  return activity + ' ' + platform.bold();
+  return `${activity} <strong>${platform}</strong>`;
 };
 
 //  Random time generator
